@@ -56,6 +56,7 @@ each changed area).
 | (round 2) empty spots circled | Gap fills merged into neighbors: Brandon Village block → **Buckingham**; Memorial Baptist Church block + the 36th/Glebe triangle (one pinched gap) → **Old Glebe**; the block south of S. George Mason Dr → **Claremont**; the unassigned pocket east of Shirlington, up to but not across I-395 → **Shirlington** |
 | (round 3) | **Cherry Valley Nature Area** dropped as its own feature and merged into **Cherrydale** |
 | (round 3) | **Potomac Yard** clipped to stay west of the **GW Parkway** (drops the airport W Entrance block and the shoreline strip south of the airfield; the Potomac Ave hotel block stays) |
+| (round 5) | I-395/Shirlington Rd interchange: the wedge north of the county line (Four Mile Run + ramps, west of the I-395 mainline) plus the north-of-the-stream tip of the earlier Shirlington fill → **Green Valley**; the wedge between Shirlington Rd, the county line and the mainline → **Shirlington**. ⚠️ That second wedge is legally in the **City of Alexandria** — included deliberately as newsroom canon, the one place the map crosses the county line |
 
 Annotations that needed **no change** (already reflected in the county data):
 

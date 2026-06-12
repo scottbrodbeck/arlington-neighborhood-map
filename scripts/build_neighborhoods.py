@@ -364,6 +364,62 @@ for p in (sh_area.geoms if sh_area.geom_type == 'MultiPolygon' else [sh_area]):
                 west.append(piece)
 absorb('Shirlington', unary_union(west))
 
+# ------------- round 5: I-395 / Shirlington Rd interchange wedges
+# Local I-395 mainline through this interchange only (the county-wide chain
+# mixes in Shirley Hwy segments from other stretches and zigzags).
+i395_local = extend(chain([
+    [(p['lon'], p['lat']) for p in w['geometry']]
+    for w in i395_raw['elements']
+    if w.get('tags', {}).get('name') == 'Henry G. Shirley Memorial Highway'
+    and 'geometry' in w
+    and -77.090 < w['geometry'][len(w['geometry']) // 2]['lon'] < -77.0755
+    and 38.836 < w['geometry'][len(w['geometry']) // 2]['lat'] < 38.852
+], axis=1), axis=1, lo=38.8340, hi=38.8530)
+
+
+def west_of_395(region, must_touch):
+    pieces = []
+    for p in (region.geoms if region.geom_type == 'MultiPolygon' else [region]):
+        if p.is_empty:
+            continue
+        for piece in split(p, i395_local).geoms:
+            if piece.geom_type != 'Polygon' or piece.area < 1e-9:
+                continue
+            rp = piece.representative_point()
+            if rp.x < i395_local.interpolate(i395_local.project(rp)).x and \
+                    piece.distance(must_touch) < 1e-6:
+                pieces.append(piece)
+    return unary_union(pieces)
+
+
+# Top wedge (Four Mile Run + the ramps north of the county line, west of the
+# mainline) becomes Green Valley, along with the north-of-the-stream tip of
+# the round-2 Shirlington fill — north of the run reads as Green Valley.
+top_box = Polygon([(-77.0870, 38.8430), (-77.0768, 38.8430),
+                   (-77.0768, 38.8500), (-77.0870, 38.8500)])
+shirl_ft = by_name['Shirlington']
+spike_box = Polygon([(-77.0830, 38.8450), (-77.0760, 38.8450),
+                     (-77.0760, 38.8500), (-77.0830, 38.8500)])
+spike = shape(shirl_ft['geometry']).intersection(spike_box)
+set_geometry(shirl_ft, shape(shirl_ft['geometry']).difference(spike))
+
+gv_ft = by_name['Green Valley']
+# `big` predates the round-2 Shirlington absorb — exclude what's Shirlington now
+wedge = west_of_395(big.intersection(top_box).difference(shape(shirl_ft['geometry'])),
+                    unary_union([shape(gv_ft['geometry']), spike]))
+set_geometry(gv_ft, unary_union([shape(gv_ft['geometry']), wedge, spike]))
+additions.append(wedge)
+
+# Bottom wedge (between Shirlington Rd, the county line and I-395) is
+# actually in the City of Alexandria, but it reads as Shirlington for
+# ARLnow's purposes — newsroom call, extends past the county line.
+bot_box = Polygon([(-77.0865, 38.8375), (-77.0772, 38.8375),
+                   (-77.0772, 38.8445), (-77.0865, 38.8445)])
+shirl_now = shape(shirl_ft['geometry'])
+bottom = west_of_395(bot_box.difference(county), shirl_now)
+set_geometry(shirl_ft, unary_union([shirl_now, bottom]))
+additions.append(bottom)
+
 # -------------------------------------------------------------- validation
 print('--- validation ---')
 final_geoms = {ft['properties']['CIVIC']: shape(ft['geometry']) for ft in features}
@@ -412,6 +468,11 @@ for label, pt, want in [
     ('Memorial Baptist Church', (-77.1349, 38.9140), 'Old Glebe'),
     ('North-of-Claremont block', (-77.1039, 38.8486), 'Claremont'),
     ('East-of-Shirlington area', (-77.0824, 38.8437), 'Shirlington'),
+    ('GV wedge (stream/ramps)', (-77.0830, 38.8445), 'Green Valley'),
+    ('LBC by the interchange', (-77.0790, 38.8442), 'Long Branch Creek'),
+    ('GV ex-Shirlington spike', (-77.0812, 38.8475), 'Green Valley'),
+    ('Long Branch Creek core', (-77.0730, 38.8460), 'Long Branch Creek'),
+    ('Interchange wedge (Alex.)', (-77.0845, 38.8423), 'Shirlington'),
     ('Cherry Valley Nature Area', cherry_rep, 'Cherrydale'),
     ('Tuckahoe Elem.', (-77.1551, 38.8950), 'East Falls Church'),
     ("Hall's Hill rep. point",
