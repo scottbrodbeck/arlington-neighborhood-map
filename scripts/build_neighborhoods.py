@@ -197,6 +197,16 @@ set_geometry(ft, ballston)
 vsq_ft = new_feature('Virginia Square', va_square, color=4)
 features.insert(features.index(ft) + 1, vsq_ft)
 
+# 3b. The Wilson Blvd / N. Quincy St / N. Glebe Rd triangle west of Quincy
+# (part of Ashton Heights CA) reads as Ballston per the newsroom (round 4).
+# The same Quincy cut line works: Quincy dead-ends into Glebe Rd at the
+# triangle's southern vertex, and Glebe is already the CA boundary.
+ash_w, ash_e = cut(poly_of(by_name['Ashton Heights']), quincy,
+                   probe_a=(-77.1095, 38.8775),   # the triangle
+                   probe_b=(-77.1015, 38.8780))   # Ashton Heights proper
+set_geometry(by_name['Ashton Heights'], ash_e)
+set_geometry(ft, unary_union([shape(ft['geometry']), ash_w]))
+
 # ------------------------------------------------ 4. Clarendon / Courthouse
 cc = poly_of(by_name['Clarendon - Courthouse'])
 barton = extend(chain(street_segments('North Barton Street',
@@ -382,6 +392,8 @@ print(f'worst pairwise overlap: {worst:.2e}')
 
 for label, pt, want in [
     ('Ballston metro', (-77.1118, 38.8821), 'Ballston'),
+    ('Quincy/Glebe triangle', (-77.1095, 38.8775), 'Ballston'),
+    ('Ashton Heights core', (-77.1015, 38.8780), 'Ashton Heights'),
     ('Central Library', (-77.1068, 38.8866), 'Virginia Square'),
     ('Clarendon metro', (-77.0955, 38.8868), 'Clarendon'),
     ('Courthouse complex', (-77.0852, 38.8907), 'Courthouse'),

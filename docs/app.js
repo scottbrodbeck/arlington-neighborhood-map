@@ -35,13 +35,20 @@ const map = new maplibregl.Map({
 });
 map.addControl(new maplibregl.NavigationControl(), 'top-right');
 
+// Load the lookup data immediately — search must work even if the basemap
+// is still streaming tiles (map 'load' waits for full style+tile idle).
+const dataReady = Promise.all([
+  fetch('./neighborhoods.json').then((r) => r.json()),
+  fetch('./labels.json').then((r) => r.json()),
+  fetch('./county.json').then((r) => r.json()),
+]).then(([h, l, c]) => {
+  hoods = h;
+  countyRing = c.ring;
+  return { hoods: h, labels: l };
+});
+
 map.on('load', async () => {
-  let labels;
-  [hoods, labels, countyRing] = await Promise.all([
-    fetch('./neighborhoods.json').then((r) => r.json()),
-    fetch('./labels.json').then((r) => r.json()),
-    fetch('./county.json').then((r) => r.json()).then((d) => d.ring),
-  ]);
+  const { labels } = await dataReady;
 
   map.addSource('hoods', { type: 'geojson', data: hoods, generateId: true });
   map.addSource('hood-labels', { type: 'geojson', data: labels });
@@ -262,7 +269,8 @@ const hintEl = document.getElementById('hint');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const raw = input.value.trim();
-  if (!raw || !hoods) return;
+  if (!raw) return;
+  await dataReady;
 
   // "2000 block of N Quincy St" -> geocode mid-block as 2050 N Quincy St
   const blockMatch = raw.match(/^(?:the\s+)?(\d{2,5})\s+block\s+of\s+(.+)$/i);

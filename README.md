@@ -47,7 +47,7 @@ each changed area).
 | "Arlington" struck from "Arlington - East Falls Church" | Renamed **East Falls Church** |
 | "Hall's Hill" written above "John M. Langston" | Renamed **Hall's Hill / High View Park** (round 4: dropped the Langston part) |
 | "North" struck from "North Rosslyn" + loop drawn around the high-rise district | **Rosslyn** = North Rosslyn + the part of Radnor/Ft.Myer Heights north of **14th St N**. The bluff south of 14th St N remains **Radnor/Ft.Myer Heights** (the printed label sat outside the drawn loop) |
-| Outline around Ballston with arrows to "Ballston" and "Virginia Square" | Split along **N. Quincy St** → **Ballston** (west) / **Virginia Square** (east) |
+| Outline around Ballston with arrows to "Ballston" and "Virginia Square" | Split along **N. Quincy St** → **Ballston** (west) / **Virginia Square** (east). Round 4: the Wilson Blvd / N. Quincy / N. Glebe triangle (formerly Ashton Heights) also moved to **Ballston** |
 | "Clarendon / Courthouse" arrows + box around the courthouse area | Split along **N. Barton St** → **Clarendon** (west) / **Courthouse** (east) |
 | "Pentagon City" box | Carved out of Aurora Highlands: I-395 (N), S. Joyce St (W), S. Eads St / Crystal City boundary (E); south edge runs **15th St S → S. Hayes St → 18th St S**, matching the notch drawn around the fire station / Aurora Hills library block |
 | "Country Club Hills" label on unassigned area | New polygon filling the hole between Old Glebe, Gulf Branch, Bellevue Forest, Donaldson Run, Old Dominion and Rock Spring (Washington Golf & Country Club area) |
