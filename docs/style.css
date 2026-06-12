@@ -24,10 +24,23 @@ html, body {
   padding: 14px 16px;
 }
 
+#panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
 #panel h1 {
-  margin: 0 0 10px;
+  margin: 0;
   font-size: 16px;
   color: #1d1d3a;
+}
+
+#brand img {
+  height: 20px;
+  display: block;
 }
 
 #search-form {

@@ -5,7 +5,7 @@ Starts from Arlington County's Civic Association polygons and applies the
 hand-annotated changes from the newsroom's printed wall map (IMG_8281.jpeg):
 
   1. Rename "Arlington - East Falls Church"  -> "East Falls Church"
-  2. Rename "John M Langston"                -> "Hall's Hill / John M. Langston"
+  2. Rename "John M Langston"                -> "Hall's Hill / High View Park"
   3. Split  "Ballston - Virginia Square"     -> "Ballston" / "Virginia Square"
      along N. Quincy St
   4. Split  "Clarendon - Courthouse"         -> "Clarendon" / "Courthouse"
@@ -173,7 +173,7 @@ original_union = unary_union([shape(ft['geometry']) for ft in features])
 
 # ------------------------------------------------------------------ 1 & 2
 rename(by_name['Arlington - East Falls Church'], 'East Falls Church')
-rename(by_name['John M Langston'], "Hall's Hill / John M. Langston")
+rename(by_name['John M Langston'], "Hall's Hill / High View Park")
 
 # ------------------------------ 2b. Cherry Valley Nature Area -> Cherrydale
 cv_ft = by_name.pop('Cherry Valley Nature Area')
@@ -403,8 +403,8 @@ for label, pt, want in [
     ('Cherry Valley Nature Area', cherry_rep, 'Cherrydale'),
     ('Tuckahoe Elem.', (-77.1551, 38.8950), 'East Falls Church'),
     ("Hall's Hill rep. point",
-     next(p for p in [final_geoms["Hall's Hill / John M. Langston"].representative_point()]
-          ).coords[0], "Hall's Hill / John M. Langston"),
+     next(p for p in [final_geoms["Hall's Hill / High View Park"].representative_point()]
+          ).coords[0], "Hall's Hill / High View Park"),
 ]:
     hits = [n for n, g in final_geoms.items() if g.contains(Point(pt))]
     ok = hits == [want]

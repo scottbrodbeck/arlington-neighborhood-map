@@ -45,7 +45,7 @@ each changed area).
 | Annotation on map | Change |
 |---|---|
 | "Arlington" struck from "Arlington - East Falls Church" | Renamed **East Falls Church** |
-| "Hall's Hill" written above "John M. Langston" | Renamed **Hall's Hill / John M. Langston** |
+| "Hall's Hill" written above "John M. Langston" | Renamed **Hall's Hill / High View Park** (round 4: dropped the Langston part) |
 | "North" struck from "North Rosslyn" + loop drawn around the high-rise district | **Rosslyn** = North Rosslyn + the part of Radnor/Ft.Myer Heights north of **14th St N**. The bluff south of 14th St N remains **Radnor/Ft.Myer Heights** (the printed label sat outside the drawn loop) |
 | Outline around Ballston with arrows to "Ballston" and "Virginia Square" | Split along **N. Quincy St** → **Ballston** (west) / **Virginia Square** (east) |
 | "Clarendon / Courthouse" arrows + box around the courthouse area | Split along **N. Barton St** → **Clarendon** (west) / **Courthouse** (east) |
