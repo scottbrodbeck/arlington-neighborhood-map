@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "neighborhood-map",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/Users/scottbrodbeck/Documents/GitHub/arlington-neighborhood-map/scripts/dev_server.py"],
+      "port": 8741
+    }
+  ]
+}

@@ -1,0 +1,3261 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-04-21T17:01:53Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "way",
+  "id": 4681080,
+  "bounds": {
+    "minlat": 38.8358043,
+    "minlon": -77.0963665,
+    "maxlat": 38.8365955,
+    "maxlon": -77.0920487
+  },
+  "nodes": [
+    485359216,
+    645062568,
+    645062571,
+    645062572,
+    485359218,
+    287864,
+    287865,
+    485359221
+  ],
+  "geometry": [
+    { "lat": 38.8365955, "lon": -77.0920487 },
+    { "lat": 38.8362055, "lon": -77.0932965 },
+    { "lat": 38.8360216, "lon": -77.0939134 },
+    { "lat": 38.8358795, "lon": -77.0945517 },
+    { "lat": 38.8358272, "lon": -77.0949158 },
+    { "lat": 38.8358138, "lon": -77.0952677 },
+    { "lat": 38.8358138, "lon": -77.0960401 },
+    { "lat": 38.8358043, "lon": -77.0963665 }
+  ],
+  "tags": {
+    "destination": "King Street",
+    "destination:ref": "VA 7",
+    "highway": "motorway_link",
+    "junction:ref": "5",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "paved",
+    "turn:lanes": "slight_left;slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 8795244,
+  "bounds": {
+    "minlat": 38.8467440,
+    "minlon": -77.0794979,
+    "maxlat": 38.8477265,
+    "maxlon": -77.0779621
+  },
+  "nodes": [
+    645110597,
+    645110874,
+    6988711326,
+    6988711299,
+    645110879,
+    645110881,
+    645110883,
+    645110885,
+    1692601030,
+    1692601035,
+    1692601037,
+    1692601033,
+    1692601031,
+    1692601028,
+    1692601018
+  ],
+  "geometry": [
+    { "lat": 38.8467440, "lon": -77.0780400 },
+    { "lat": 38.8469617, "lon": -77.0779695 },
+    { "lat": 38.8470397, "lon": -77.0779621 },
+    { "lat": 38.8471197, "lon": -77.0779663 },
+    { "lat": 38.8472009, "lon": -77.0779834 },
+    { "lat": 38.8473372, "lon": -77.0780350 },
+    { "lat": 38.8474716, "lon": -77.0781332 },
+    { "lat": 38.8475775, "lon": -77.0782603 },
+    { "lat": 38.8476510, "lon": -77.0784026 },
+    { "lat": 38.8477108, "lon": -77.0785726 },
+    { "lat": 38.8477265, "lon": -77.0787639 },
+    { "lat": 38.8477069, "lon": -77.0789578 },
+    { "lat": 38.8476794, "lon": -77.0790913 },
+    { "lat": 38.8476186, "lon": -77.0792524 },
+    { "lat": 38.8474990, "lon": -77.0794979 }
+  ],
+  "tags": {
+    "destination": "Richmond",
+    "destination:ref": "I 395 South",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Arlington, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 8795325,
+  "bounds": {
+    "minlat": 38.8352526,
+    "minlon": -77.0943403,
+    "maxlat": 38.8363079,
+    "maxlon": -77.0919251
+  },
+  "nodes": [
+    8164638919,
+    485359254,
+    485359261,
+    485359262,
+    485358822
+  ],
+  "geometry": [
+    { "lat": 38.8352526, "lon": -77.0943403 },
+    { "lat": 38.8356199, "lon": -77.0935253 },
+    { "lat": 38.8358272, "lon": -77.0929932 },
+    { "lat": 38.8361239, "lon": -77.0922555 },
+    { "lat": 38.8363079, "lon": -77.0919251 }
+  ],
+  "tags": {
+    "destination": "Washington",
+    "destination:ref": "I 395 North",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Arlington, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 8795327,
+  "bounds": {
+    "minlat": 38.8375539,
+    "minlon": -77.0881781,
+    "maxlat": 38.8387648,
+    "maxlon": -77.0847312
+  },
+  "nodes": [
+    63330580,
+    63330603,
+    6988711313,
+    6988734689,
+    645095582,
+    645095585,
+    645095590,
+    645095593,
+    645095597,
+    645095608,
+    645095611,
+    645095614,
+    645095617,
+    645095620,
+    645095450
+  ],
+  "geometry": [
+    { "lat": 38.8378864, "lon": -77.0881781 },
+    { "lat": 38.8385750, "lon": -77.0866846 },
+    { "lat": 38.8386557, "lon": -77.0864945 },
+    { "lat": 38.8387147, "lon": -77.0863045 },
+    { "lat": 38.8387481, "lon": -77.0861242 },
+    { "lat": 38.8387648, "lon": -77.0859365 },
+    { "lat": 38.8387648, "lon": -77.0856951 },
+    { "lat": 38.8387439, "lon": -77.0854885 },
+    { "lat": 38.8386854, "lon": -77.0852740 },
+    { "lat": 38.8386123, "lon": -77.0851050 },
+    { "lat": 38.8385183, "lon": -77.0849977 },
+    { "lat": 38.8384180, "lon": -77.0849119 },
+    { "lat": 38.8382634, "lon": -77.0848395 },
+    { "lat": 38.8380712, "lon": -77.0847912 },
+    { "lat": 38.8375539, "lon": -77.0847312 }
+  ],
+  "tags": {
+    "destination": "Quaker Lane",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Arlington, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 8795389,
+  "bounds": {
+    "minlat": 38.8464206,
+    "minlon": -77.0793257,
+    "maxlat": 38.8472082,
+    "maxlon": -77.0781121
+  },
+  "nodes": [
+    63331541,
+    6988711309,
+    6988711379,
+    6988711338,
+    6988711380,
+    6988711295,
+    6988711291,
+    6988711336,
+    6988711350,
+    645110716,
+    6988711370,
+    6988711331,
+    645110724,
+    6988711351,
+    6988711377,
+    645110730,
+    6988711381,
+    6988711297,
+    645110736,
+    645110737,
+    6988711323,
+    6988711316,
+    645110739,
+    6988711348,
+    6988734691,
+    6988734685,
+    6988711311,
+    645110743,
+    5711555703,
+    6988734694,
+    6988711365,
+    645110627
+  ],
+  "geometry": [
+    { "lat": 38.8468549, "lon": -77.0790186 },
+    { "lat": 38.8471072, "lon": -77.0787176 },
+    { "lat": 38.8471555, "lon": -77.0786465 },
+    { "lat": 38.8471823, "lon": -77.0785921 },
+    { "lat": 38.8472034, "lon": -77.0785321 },
+    { "lat": 38.8472082, "lon": -77.0784966 },
+    { "lat": 38.8472060, "lon": -77.0784238 },
+    { "lat": 38.8471961, "lon": -77.0783701 },
+    { "lat": 38.8471729, "lon": -77.0782922 },
+    { "lat": 38.8471460, "lon": -77.0782336 },
+    { "lat": 38.8471174, "lon": -77.0781968 },
+    { "lat": 38.8470654, "lon": -77.0781490 },
+    { "lat": 38.8470248, "lon": -77.0781263 },
+    { "lat": 38.8469821, "lon": -77.0781156 },
+    { "lat": 38.8469262, "lon": -77.0781121 },
+    { "lat": 38.8468536, "lon": -77.0781263 },
+    { "lat": 38.8467989, "lon": -77.0781496 },
+    { "lat": 38.8467354, "lon": -77.0781877 },
+    { "lat": 38.8466635, "lon": -77.0782443 },
+    { "lat": 38.8465360, "lon": -77.0783569 },
+    { "lat": 38.8464985, "lon": -77.0784082 },
+    { "lat": 38.8464598, "lon": -77.0784814 },
+    { "lat": 38.8464378, "lon": -77.0785501 },
+    { "lat": 38.8464256, "lon": -77.0786240 },
+    { "lat": 38.8464206, "lon": -77.0787131 },
+    { "lat": 38.8464260, "lon": -77.0787688 },
+    { "lat": 38.8464468, "lon": -77.0788554 },
+    { "lat": 38.8464754, "lon": -77.0789390 },
+    { "lat": 38.8464875, "lon": -77.0789586 },
+    { "lat": 38.8465354, "lon": -77.0790515 },
+    { "lat": 38.8465826, "lon": -77.0791173 },
+    { "lat": 38.8467940, "lon": -77.0793257 }
+  ],
+  "tags": {
+    "destination": "Marymount University;Glebe Road",
+    "destination:ref": "VA 120 North",
+    "highway": "motorway_link",
+    "junction:ref": "7B",
+    "lanes": "1",
+    "maxspeed:advisory": "20 mph",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Arlington, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 8795390,
+  "bounds": {
+    "minlat": 38.8451176,
+    "minlon": -77.0798053,
+    "maxlat": 38.8463463,
+    "maxlon": -77.0788531
+  },
+  "nodes": [
+    2876609899,
+    645110782,
+    645110783,
+    645110784,
+    645110785,
+    645110788,
+    645110790,
+    645110793,
+    645110795,
+    645110797,
+    645110800,
+    645110802,
+    645110803,
+    645110805,
+    645110808,
+    6988711372,
+    645110810,
+    485358750
+  ],
+  "geometry": [
+    { "lat": 38.8462381, "lon": -77.0790854 },
+    { "lat": 38.8457577, "lon": -77.0788916 },
+    { "lat": 38.8455939, "lon": -77.0788531 },
+    { "lat": 38.8454435, "lon": -77.0788639 },
+    { "lat": 38.8453390, "lon": -77.0789014 },
+    { "lat": 38.8452283, "lon": -77.0789873 },
+    { "lat": 38.8451698, "lon": -77.0790758 },
+    { "lat": 38.8451301, "lon": -77.0791991 },
+    { "lat": 38.8451176, "lon": -77.0793413 },
+    { "lat": 38.8451343, "lon": -77.0794674 },
+    { "lat": 38.8451740, "lon": -77.0795854 },
+    { "lat": 38.8452408, "lon": -77.0796900 },
+    { "lat": 38.8453286, "lon": -77.0797624 },
+    { "lat": 38.8454330, "lon": -77.0798000 },
+    { "lat": 38.8455479, "lon": -77.0798053 },
+    { "lat": 38.8456016, "lon": -77.0797918 },
+    { "lat": 38.8456649, "lon": -77.0797758 },
+    { "lat": 38.8463463, "lon": -77.0794273 }
+  ],
+  "tags": {
+    "destination": "Washington",
+    "destination:ref": "I 395 North",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Arlington, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 8795406,
+  "bounds": {
+    "minlat": 38.8445011,
+    "minlon": -77.0809520,
+    "maxlat": 38.8449570,
+    "maxlon": -77.0794069
+  },
+  "nodes": [
+    645110629,
+    5632215583,
+    8129112994,
+    645110630,
+    6848537369,
+    645110631,
+    6848537368,
+    645110632,
+    6848537367,
+    645110633,
+    645110634
+  ],
+  "geometry": [
+    { "lat": 38.8445011, "lon": -77.0809520 },
+    { "lat": 38.8445588, "lon": -77.0808057 },
+    { "lat": 38.8446957, "lon": -77.0806688 },
+    { "lat": 38.8447827, "lon": -77.0805157 },
+    { "lat": 38.8448270, "lon": -77.0804215 },
+    { "lat": 38.8448582, "lon": -77.0803211 },
+    { "lat": 38.8448872, "lon": -77.0802228 },
+    { "lat": 38.8449042, "lon": -77.0801245 },
+    { "lat": 38.8449242, "lon": -77.0799781 },
+    { "lat": 38.8449358, "lon": -77.0798272 },
+    { "lat": 38.8449570, "lon": -77.0794069 }
+  ],
+  "tags": {
+    "destination": "Glebe Road",
+    "destination:ref": "VA 120 South",
+    "highway": "motorway_link",
+    "junction:ref": "7A",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Arlington, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 8795444,
+  "bounds": {
+    "minlat": 38.8476909,
+    "minlon": -77.0796317,
+    "maxlat": 38.8489341,
+    "maxlon": -77.0779439
+  },
+  "nodes": [
+    485358951,
+    6988711308,
+    6988711314,
+    6988711290,
+    6988711305,
+    6988711296,
+    485358954,
+    1929710821
+  ],
+  "geometry": [
+    { "lat": 38.8489341, "lon": -77.0779439 },
+    { "lat": 38.8485953, "lon": -77.0782774 },
+    { "lat": 38.8485143, "lon": -77.0783632 },
+    { "lat": 38.8483982, "lon": -77.0784937 },
+    { "lat": 38.8483582, "lon": -77.0785451 },
+    { "lat": 38.8483033, "lon": -77.0786238 },
+    { "lat": 38.8479251, "lon": -77.0792065 },
+    { "lat": 38.8476909, "lon": -77.0796317 }
+  ],
+  "tags": {
+    "destination": "Glebe Road;Marymount University",
+    "destination:ref": "VA 120",
+    "highway": "motorway_link",
+    "junction:ref": "7",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Arlington, VA",
+    "turn:lanes": "through;slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 8797732,
+  "bounds": {
+    "minlat": 38.8476912,
+    "minlon": -77.0783462,
+    "maxlat": 38.8531307,
+    "maxlon": -77.0740976
+  },
+  "nodes": [
+    645110561,
+    63329285,
+    370179572,
+    370179559,
+    370179616,
+    370179597
+  ],
+  "geometry": [
+    { "lat": 38.8476912, "lon": -77.0783462 },
+    { "lat": 38.8491159, "lon": -77.0771634 },
+    { "lat": 38.8500145, "lon": -77.0764355 },
+    { "lat": 38.8503556, "lon": -77.0761552 },
+    { "lat": 38.8528563, "lon": -77.0742847 },
+    { "lat": 38.8531307, "lon": -77.0740976 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "4",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 8821032,
+  "bounds": {
+    "minlat": 38.8418710,
+    "minlon": -77.0831253,
+    "maxlat": 38.8429524,
+    "maxlon": -77.0822290
+  },
+  "nodes": [
+    8142359685,
+    9392995855,
+    63714048,
+    63714052,
+    645100123
+  ],
+  "geometry": [
+    { "lat": 38.8418710, "lon": -77.0831253 },
+    { "lat": 38.8419807, "lon": -77.0830281 },
+    { "lat": 38.8421580, "lon": -77.0828710 },
+    { "lat": 38.8426130, "lon": -77.0824890 },
+    { "lat": 38.8429524, "lon": -77.0822290 }
+  ],
+  "tags": {
+    "destination": "Washington",
+    "destination:ref": "I 395 North",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Alexandria, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 8821661,
+  "bounds": {
+    "minlat": 38.8433503,
+    "minlon": -77.0827987,
+    "maxlat": 38.8434191,
+    "maxlon": -77.0826727
+  },
+  "nodes": [
+    63715336,
+    645099535
+  ],
+  "geometry": [
+    { "lat": 38.8434191, "lon": -77.0826727 },
+    { "lat": 38.8433503, "lon": -77.0827987 }
+  ],
+  "tags": {
+    "destination": "Shirlington",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Alexandria, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 8821733,
+  "bounds": {
+    "minlat": 38.8427068,
+    "minlon": -77.0832949,
+    "maxlat": 38.8430724,
+    "maxlon": -77.0829435
+  },
+  "nodes": [
+    645099354,
+    485358992
+  ],
+  "geometry": [
+    { "lat": 38.8430724, "lon": -77.0829435 },
+    { "lat": 38.8427068, "lon": -77.0832949 }
+  ],
+  "tags": {
+    "destination:lanes": "Richmond|Quaker Lane",
+    "highway": "motorway_link",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Alexandria, VA",
+    "tiger:reviewed": "no",
+    "turn:lanes": "slight_left|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 8821747,
+  "bounds": {
+    "minlat": 38.8378864,
+    "minlon": -77.0881781,
+    "maxlat": 38.8412509,
+    "maxlon": -77.0838202
+  },
+  "nodes": [
+    63330580,
+    6988711303,
+    6988711298,
+    485359280,
+    63330582,
+    63720328,
+    63720330,
+    63720332,
+    63720333,
+    63720338,
+    63720340,
+    63720342,
+    63720346,
+    63720348,
+    63720351
+  ],
+  "geometry": [
+    { "lat": 38.8378864, "lon": -77.0881781 },
+    { "lat": 38.8383558, "lon": -77.0873476 },
+    { "lat": 38.8385258, "lon": -77.0870702 },
+    { "lat": 38.8390697, "lon": -77.0862469 },
+    { "lat": 38.8397917, "lon": -77.0852512 },
+    { "lat": 38.8399923, "lon": -77.0849553 },
+    { "lat": 38.8402073, "lon": -77.0846633 },
+    { "lat": 38.8403833, "lon": -77.0844533 },
+    { "lat": 38.8405653, "lon": -77.0842703 },
+    { "lat": 38.8407063, "lon": -77.0841513 },
+    { "lat": 38.8408713, "lon": -77.0840153 },
+    { "lat": 38.8410193, "lon": -77.0839173 },
+    { "lat": 38.8410903, "lon": -77.0838773 },
+    { "lat": 38.8411713, "lon": -77.0838403 },
+    { "lat": 38.8412509, "lon": -77.0838202 }
+  ],
+  "tags": {
+    "destination": "Shirlington",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "paved",
+    "tiger:county": "Alexandria, VA;Arlington, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 8824593,
+  "bounds": {
+    "minlat": 38.8433141,
+    "minlon": -77.0825507,
+    "maxlat": 38.8466247,
+    "maxlon": -77.0796412
+  },
+  "nodes": [
+    485358771,
+    370198986,
+    63329271,
+    63362950,
+    63756685,
+    645099838
+  ],
+  "geometry": [
+    { "lat": 38.8466247, "lon": -77.0796412 },
+    { "lat": 38.8464077, "lon": -77.0798158 },
+    { "lat": 38.8440345, "lon": -77.0818930 },
+    { "lat": 38.8437604, "lon": -77.0821419 },
+    { "lat": 38.8435331, "lon": -77.0823479 },
+    { "lat": 38.8433141, "lon": -77.0825507 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "3",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 40253452,
+  "bounds": {
+    "minlat": 38.8468022,
+    "minlon": -77.0790609,
+    "maxlat": 38.8468549,
+    "maxlon": -77.0790186
+  },
+  "nodes": [
+    485358749,
+    63331541
+  ],
+  "geometry": [
+    { "lat": 38.8468022, "lon": -77.0790609 },
+    { "lat": 38.8468549, "lon": -77.0790186 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "destination:lanes": "Washington|Washington|Washington||Marymount University;Glebe Road",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "5",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt",
+    "turn:lanes": "||||right"
+  }
+},
+{
+  "type": "way",
+  "id": 40253453,
+  "bounds": {
+    "minlat": 38.8463463,
+    "minlon": -77.0794273,
+    "maxlat": 38.8468022,
+    "maxlon": -77.0790609
+  },
+  "nodes": [
+    485358750,
+    485358749
+  ],
+  "geometry": [
+    { "lat": 38.8463463, "lon": -77.0794273 },
+    { "lat": 38.8468022, "lon": -77.0790609 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "5",
+    "layer": "1",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 40253455,
+  "bounds": {
+    "minlat": 38.8469357,
+    "minlon": -77.0791721,
+    "maxlat": 38.8476306,
+    "maxlon": -77.0785983
+  },
+  "nodes": [
+    485358751,
+    485358752
+  ],
+  "geometry": [
+    { "lat": 38.8469357, "lon": -77.0791721 },
+    { "lat": 38.8476306, "lon": -77.0785983 }
+  ],
+  "tags": {
+    "bus": "yes",
+    "highway": "motorway",
+    "hov": "designated",
+    "hov:minimum": "3",
+    "lanes": "3",
+    "maxspeed": "65 mph",
+    "oneway": "reversible",
+    "psv": "yes",
+    "ref": "I 395 EXPR",
+    "sidewalk": "no",
+    "surface": "asphalt",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 40253457,
+  "bounds": {
+    "minlat": 38.8464998,
+    "minlon": -77.0795378,
+    "maxlat": 38.8469357,
+    "maxlon": -77.0791721
+  },
+  "nodes": [
+    485358769,
+    485358770,
+    485358751
+  ],
+  "geometry": [
+    { "lat": 38.8464998, "lon": -77.0795378 },
+    { "lat": 38.8466282, "lon": -77.0794296 },
+    { "lat": 38.8469357, "lon": -77.0791721 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "bus": "yes",
+    "highway": "motorway",
+    "hov": "designated",
+    "hov:minimum": "3",
+    "lanes": "3",
+    "layer": "1",
+    "maxspeed": "65 mph",
+    "oneway": "reversible",
+    "psv": "yes",
+    "ref": "I 395 EXPR",
+    "sidewalk": "no",
+    "surface": "concrete",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 40253459,
+  "bounds": {
+    "minlat": 38.8466247,
+    "minlon": -77.0796412,
+    "maxlat": 38.8470796,
+    "maxlon": -77.0792606
+  },
+  "nodes": [
+    370198984,
+    485358771
+  ],
+  "geometry": [
+    { "lat": 38.8470796, "lon": -77.0792606 },
+    { "lat": 38.8466247, "lon": -77.0796412 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "3",
+    "layer": "1",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 40253474,
+  "bounds": {
+    "minlat": 38.8432828,
+    "minlon": -77.0823785,
+    "maxlat": 38.8447832,
+    "maxlon": -77.0810261
+  },
+  "nodes": [
+    645099715,
+    485359323,
+    485358784
+  ],
+  "geometry": [
+    { "lat": 38.8432828, "lon": -77.0823785 },
+    { "lat": 38.8441482, "lon": -77.0815840 },
+    { "lat": 38.8447832, "lon": -77.0810261 }
+  ],
+  "tags": {
+    "bus": "yes",
+    "highway": "motorway",
+    "hov": "designated",
+    "hov:minimum": "3",
+    "lanes": "3",
+    "maxspeed": "65 mph",
+    "oneway": "reversible",
+    "ref": "I 395 EXPR",
+    "sidewalk": "no",
+    "surface": "asphalt",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 40253510,
+  "bounds": {
+    "minlat": 38.8408128,
+    "minlon": -77.0849884,
+    "maxlat": 38.8427068,
+    "maxlon": -77.0832949
+  },
+  "nodes": [
+    485358992,
+    485358994,
+    485358999,
+    645094521,
+    645094537
+  ],
+  "geometry": [
+    { "lat": 38.8427068, "lon": -77.0832949 },
+    { "lat": 38.8421293, "lon": -77.0837984 },
+    { "lat": 38.8417883, "lon": -77.0841160 },
+    { "lat": 38.8412236, "lon": -77.0846279 },
+    { "lat": 38.8408128, "lon": -77.0849884 }
+  ],
+  "tags": {
+    "destination": "Richmond",
+    "destination:ref": "I 395 South",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 40253513,
+  "bounds": {
+    "minlat": 38.8373499,
+    "minlon": -77.0903054,
+    "maxlat": 38.8389425,
+    "maxlon": -77.0875865
+  },
+  "nodes": [
+    10848149862,
+    485359038,
+    6988711340,
+    6988734695,
+    485359035,
+    485359033,
+    485359031
+  ],
+  "geometry": [
+    { "lat": 38.8389425, "lon": -77.0875865 },
+    { "lat": 38.8388357, "lon": -77.0877317 },
+    { "lat": 38.8386388, "lon": -77.0880080 },
+    { "lat": 38.8384877, "lon": -77.0882470 },
+    { "lat": 38.8383209, "lon": -77.0885557 },
+    { "lat": 38.8377861, "lon": -77.0895428 },
+    { "lat": 38.8373499, "lon": -77.0903054 }
+  ],
+  "tags": {
+    "destination": "Richmond",
+    "destination:ref": "I 395 South",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Arlington, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 40253514,
+  "bounds": {
+    "minlat": 38.8448967,
+    "minlon": -77.0813284,
+    "maxlat": 38.8474990,
+    "maxlon": -77.0794979
+  },
+  "nodes": [
+    1692601018,
+    1692600994,
+    63329254,
+    63329256,
+    1692600958,
+    63329258,
+    63329263,
+    1692600877,
+    63329265
+  ],
+  "geometry": [
+    { "lat": 38.8474990, "lon": -77.0794979 },
+    { "lat": 38.8472843, "lon": -77.0797849 },
+    { "lat": 38.8469911, "lon": -77.0801009 },
+    { "lat": 38.8467705, "lon": -77.0802885 },
+    { "lat": 38.8465577, "lon": -77.0804245 },
+    { "lat": 38.8462930, "lon": -77.0805643 },
+    { "lat": 38.8455360, "lon": -77.0809168 },
+    { "lat": 38.8452654, "lon": -77.0810729 },
+    { "lat": 38.8448967, "lon": -77.0813284 }
+  ],
+  "tags": {
+    "destination": "Shirlington;Quaker Lane",
+    "highway": "motorway_link",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Alexandria, VA:Arlington, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50659540,
+  "bounds": {
+    "minlat": 38.8412509,
+    "minlon": -77.0839916,
+    "maxlat": 38.8418404,
+    "maxlon": -77.0838018
+  },
+  "nodes": [
+    63720351,
+    645094140,
+    645094144,
+    645094149,
+    5643033407,
+    645094265
+  ],
+  "geometry": [
+    { "lat": 38.8412509, "lon": -77.0838202 },
+    { "lat": 38.8413844, "lon": -77.0838018 },
+    { "lat": 38.8415035, "lon": -77.0838199 },
+    { "lat": 38.8416195, "lon": -77.0838562 },
+    { "lat": 38.8417330, "lon": -77.0839157 },
+    { "lat": 38.8418404, "lon": -77.0839916 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "layer": "1",
+    "oneway": "yes",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Alexandria, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50659543,
+  "bounds": {
+    "minlat": 38.8413614,
+    "minlon": -77.0837214,
+    "maxlat": 38.8418628,
+    "maxlon": -77.0835443
+  },
+  "nodes": [
+    645094210,
+    645094326,
+    645094339,
+    645094357,
+    645094368
+  ],
+  "geometry": [
+    { "lat": 38.8413614, "lon": -77.0837214 },
+    { "lat": 38.8415829, "lon": -77.0836811 },
+    { "lat": 38.8416873, "lon": -77.0836543 },
+    { "lat": 38.8417709, "lon": -77.0836141 },
+    { "lat": 38.8418628, "lon": -77.0835443 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "bus": "yes",
+    "destination:ref": "I 395 North Express Lanes",
+    "highway": "motorway_link",
+    "hov": "yes",
+    "hov:minimum": "3",
+    "lanes": "1",
+    "layer": "1",
+    "oneway": "yes",
+    "sidewalk": "no",
+    "surface": "concrete",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50659544,
+  "bounds": {
+    "minlat": 38.8417677,
+    "minlon": -77.0839916,
+    "maxlat": 38.8418628,
+    "maxlon": -77.0835443
+  },
+  "nodes": [
+    645094368,
+    645094381,
+    6165283138,
+    645094386,
+    6165283137,
+    645094393,
+    645094265
+  ],
+  "geometry": [
+    { "lat": 38.8418628, "lon": -77.0835443 },
+    { "lat": 38.8418017, "lon": -77.0836161 },
+    { "lat": 38.8417774, "lon": -77.0836575 },
+    { "lat": 38.8417677, "lon": -77.0837059 },
+    { "lat": 38.8417696, "lon": -77.0837581 },
+    { "lat": 38.8417913, "lon": -77.0838521 },
+    { "lat": 38.8418404, "lon": -77.0839916 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "destination": "Shirlington",
+    "highway": "motorway_link",
+    "hov": "yes",
+    "hov:minimum": "3",
+    "lanes": "1",
+    "layer": "1",
+    "oneway": "yes",
+    "psv": "yes",
+    "sidewalk": "no",
+    "surface": "concrete",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50659611,
+  "bounds": {
+    "minlat": 38.8408128,
+    "minlon": -77.0849884,
+    "maxlat": 38.8430453,
+    "maxlon": -77.0827961
+  },
+  "nodes": [
+    645099282,
+    63756703,
+    63756704,
+    63756709,
+    63756713,
+    645094537
+  ],
+  "geometry": [
+    { "lat": 38.8430453, "lon": -77.0827961 },
+    { "lat": 38.8423960, "lon": -77.0833960 },
+    { "lat": 38.8421710, "lon": -77.0836010 },
+    { "lat": 38.8415850, "lon": -77.0841800 },
+    { "lat": 38.8413920, "lon": -77.0843750 },
+    { "lat": 38.8408128, "lon": -77.0849884 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "3",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 50659612,
+  "bounds": {
+    "minlat": 38.8430724,
+    "minlon": -77.0829435,
+    "maxlat": 38.8433428,
+    "maxlon": -77.0827208
+  },
+  "nodes": [
+    645099346,
+    645099354
+  ],
+  "geometry": [
+    { "lat": 38.8433428, "lon": -77.0827208 },
+    { "lat": 38.8430724, "lon": -77.0829435 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "highway": "motorway_link",
+    "lanes": "2",
+    "layer": "1",
+    "oneway": "yes",
+    "surface": "concrete",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Alexandria, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50659615,
+  "bounds": {
+    "minlat": 38.8430250,
+    "minlon": -77.0845181,
+    "maxlat": 38.8431309,
+    "maxlon": -77.0832225
+  },
+  "nodes": [
+    63718685,
+    63718680,
+    63718676,
+    63718674,
+    63718670,
+    63718666
+  ],
+  "geometry": [
+    { "lat": 38.8431309, "lon": -77.0832225 },
+    { "lat": 38.8431010, "lon": -77.0833230 },
+    { "lat": 38.8430500, "lon": -77.0835340 },
+    { "lat": 38.8430250, "lon": -77.0838470 },
+    { "lat": 38.8430260, "lon": -77.0841420 },
+    { "lat": 38.8430277, "lon": -77.0845181 }
+  ],
+  "tags": {
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Alexandria, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50659616,
+  "bounds": {
+    "minlat": 38.8431309,
+    "minlon": -77.0832225,
+    "maxlat": 38.8433503,
+    "maxlon": -77.0827987
+  },
+  "nodes": [
+    645099535,
+    63718708,
+    63718707,
+    63718700,
+    63718685
+  ],
+  "geometry": [
+    { "lat": 38.8433503, "lon": -77.0827987 },
+    { "lat": 38.8432760, "lon": -77.0829190 },
+    { "lat": 38.8432145, "lon": -77.0830320 },
+    { "lat": 38.8431600, "lon": -77.0831460 },
+    { "lat": 38.8431309, "lon": -77.0832225 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "layer": "1",
+    "oneway": "yes",
+    "surface": "concrete",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Alexandria, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50659618,
+  "bounds": {
+    "minlat": 38.8432656,
+    "minlon": -77.0822307,
+    "maxlat": 38.8447832,
+    "maxlon": -77.0810261
+  },
+  "nodes": [
+    645099609,
+    6988711339,
+    6988711337,
+    485358782,
+    485358783,
+    485358784
+  ],
+  "geometry": [
+    { "lat": 38.8432656, "lon": -77.0822307 },
+    { "lat": 38.8437689, "lon": -77.0817720 },
+    { "lat": 38.8438907, "lon": -77.0816690 },
+    { "lat": 38.8442126, "lon": -77.0814209 },
+    { "lat": 38.8446075, "lon": -77.0811477 },
+    { "lat": 38.8447832, "lon": -77.0810261 }
+  ],
+  "tags": {
+    "bus": "yes",
+    "destination:backward": "Shirlington",
+    "destination:forward": "395 Express Lanes",
+    "destination:ref:forward": "I 395 North",
+    "highway": "motorway_link",
+    "hov": "yes",
+    "hov:minimum": "3",
+    "lanes": "1",
+    "oneway": "reversible",
+    "psv": "yes",
+    "sidewalk": "no",
+    "surface": "asphalt",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50659619,
+  "bounds": {
+    "minlat": 38.8430012,
+    "minlon": -77.0824711,
+    "maxlat": 38.8432656,
+    "maxlon": -77.0822307
+  },
+  "nodes": [
+    645099662,
+    645099609
+  ],
+  "geometry": [
+    { "lat": 38.8430012, "lon": -77.0824711 },
+    { "lat": 38.8432656, "lon": -77.0822307 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "bus": "yes",
+    "destination:backward": "Shirlington",
+    "destination:forward": "395 Express Lanes",
+    "destination:ref:forward": "I 395 North",
+    "highway": "motorway_link",
+    "hov": "yes",
+    "hov:minimum": "3",
+    "lanes": "1",
+    "layer": "1",
+    "oneway": "reversible",
+    "psv": "yes",
+    "sidewalk": "no",
+    "surface": "concrete",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50659620,
+  "bounds": {
+    "minlat": 38.8430238,
+    "minlon": -77.0826228,
+    "maxlat": 38.8432828,
+    "maxlon": -77.0823785
+  },
+  "nodes": [
+    645099732,
+    645099715
+  ],
+  "geometry": [
+    { "lat": 38.8430238, "lon": -77.0826228 },
+    { "lat": 38.8432828, "lon": -77.0823785 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "bus": "yes",
+    "highway": "motorway",
+    "hov": "designated",
+    "hov:minimum": "3",
+    "lanes": "3",
+    "layer": "1",
+    "maxspeed": "65 mph",
+    "oneway": "reversible",
+    "ref": "I 395 EXPR",
+    "sidewalk": "no",
+    "surface": "concrete",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50659628,
+  "bounds": {
+    "minlat": 38.8430453,
+    "minlon": -77.0827961,
+    "maxlat": 38.8433141,
+    "maxlon": -77.0825507
+  },
+  "nodes": [
+    645099838,
+    645099282
+  ],
+  "geometry": [
+    { "lat": 38.8433141, "lon": -77.0825507 },
+    { "lat": 38.8430453, "lon": -77.0827961 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "horse": "no",
+    "lanes": "3",
+    "layer": "1",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 50659632,
+  "bounds": {
+    "minlat": 38.8432398,
+    "minlon": -77.0820803,
+    "maxlat": 38.8437632,
+    "maxlon": -77.0815969
+  },
+  "nodes": [
+    645099933,
+    63714061,
+    645099944
+  ],
+  "geometry": [
+    { "lat": 38.8432398, "lon": -77.0820803 },
+    { "lat": 38.8435299, "lon": -77.0818143 },
+    { "lat": 38.8437632, "lon": -77.0815969 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "horse": "no",
+    "lanes": "4",
+    "maxspeed": "70 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 50659633,
+  "bounds": {
+    "minlat": 38.8429745,
+    "minlon": -77.0823280,
+    "maxlat": 38.8432398,
+    "maxlon": -77.0820803
+  },
+  "nodes": [
+    645099972,
+    645099933
+  ],
+  "geometry": [
+    { "lat": 38.8429745, "lon": -77.0823280 },
+    { "lat": 38.8432398, "lon": -77.0820803 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "horse": "no",
+    "lanes": "4",
+    "layer": "1",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "concrete"
+  }
+},
+{
+  "type": "way",
+  "id": 50659634,
+  "bounds": {
+    "minlat": 38.8432207,
+    "minlon": -77.0820235,
+    "maxlat": 38.8437632,
+    "maxlon": -77.0815969
+  },
+  "nodes": [
+    63714060,
+    645099944
+  ],
+  "geometry": [
+    { "lat": 38.8432207, "lon": -77.0820235 },
+    { "lat": 38.8437632, "lon": -77.0815969 }
+  ],
+  "tags": {
+    "destination": "Washington",
+    "destination:ref": "I 395 North",
+    "highway": "motorway_link",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Alexandria, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 50659638,
+  "bounds": {
+    "minlat": 38.8429524,
+    "minlon": -77.0822290,
+    "maxlat": 38.8432207,
+    "maxlon": -77.0820235
+  },
+  "nodes": [
+    645100123,
+    63714060
+  ],
+  "geometry": [
+    { "lat": 38.8429524, "lon": -77.0822290 },
+    { "lat": 38.8432207, "lon": -77.0820235 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "destination": "Washington",
+    "destination:ref": "I 395 North",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "layer": "1",
+    "oneway": "yes",
+    "surface": "concrete",
+    "tiger:county": "Alexandria, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 50661790,
+  "bounds": {
+    "minlat": 38.8475813,
+    "minlon": -77.0784321,
+    "maxlat": 38.8476912,
+    "maxlon": -77.0783462
+  },
+  "nodes": [
+    645110568,
+    645110561
+  ],
+  "geometry": [
+    { "lat": 38.8475813, "lon": -77.0784321 },
+    { "lat": 38.8476912, "lon": -77.0783462 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "4",
+    "layer": "1",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 50661794,
+  "bounds": {
+    "minlat": 38.8471189,
+    "minlon": -77.0798611,
+    "maxlat": 38.8473524,
+    "maxlon": -77.0798456
+  },
+  "nodes": [
+    645110572,
+    645110575
+  ],
+  "geometry": [
+    { "lat": 38.8473524, "lon": -77.0798611 },
+    { "lat": 38.8471189, "lon": -77.0798456 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "destination": "Richmond",
+    "destination:ref": "I 395 South",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "layer": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Arlington, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50661802,
+  "bounds": {
+    "minlat": 38.8448967,
+    "minlon": -77.0813284,
+    "maxlat": 38.8471189,
+    "maxlon": -77.0798456
+  },
+  "nodes": [
+    645110575,
+    5711555644,
+    645110583,
+    645110584,
+    63332174,
+    63332177,
+    63332180,
+    645110585,
+    63329265
+  ],
+  "geometry": [
+    { "lat": 38.8471189, "lon": -77.0798456 },
+    { "lat": 38.8470377, "lon": -77.0798456 },
+    { "lat": 38.8470228, "lon": -77.0798456 },
+    { "lat": 38.8469288, "lon": -77.0798751 },
+    { "lat": 38.8467285, "lon": -77.0799789 },
+    { "lat": 38.8462603, "lon": -77.0802774 },
+    { "lat": 38.8458864, "lon": -77.0805349 },
+    { "lat": 38.8454892, "lon": -77.0808253 },
+    { "lat": 38.8448967, "lon": -77.0813284 }
+  ],
+  "tags": {
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Arlington, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50661815,
+  "bounds": {
+    "minlat": 38.8467440,
+    "minlon": -77.0780400,
+    "maxlat": 38.8470946,
+    "maxlon": -77.0778589
+  },
+  "nodes": [
+    645110597,
+    6988734696,
+    6988711302,
+    6988711378,
+    6988711292
+  ],
+  "geometry": [
+    { "lat": 38.8467440, "lon": -77.0780400 },
+    { "lat": 38.8468810, "lon": -77.0779509 },
+    { "lat": 38.8469347, "lon": -77.0779215 },
+    { "lat": 38.8469885, "lon": -77.0778954 },
+    { "lat": 38.8470946, "lon": -77.0778589 }
+  ],
+  "tags": {
+    "destination": "Washington",
+    "destination:ref": "I 395 North",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 50661823,
+  "bounds": {
+    "minlat": 38.8470796,
+    "minlon": -77.0792606,
+    "maxlat": 38.8476456,
+    "maxlon": -77.0787906
+  },
+  "nodes": [
+    645110624,
+    370198984
+  ],
+  "geometry": [
+    { "lat": 38.8476456, "lon": -77.0787906 },
+    { "lat": 38.8470796, "lon": -77.0792606 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "3",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 50661830,
+  "bounds": {
+    "minlat": 38.8476456,
+    "minlon": -77.0787906,
+    "maxlat": 38.8477980,
+    "maxlon": -77.0786692
+  },
+  "nodes": [
+    645110625,
+    645110624
+  ],
+  "geometry": [
+    { "lat": 38.8477980, "lon": -77.0786692 },
+    { "lat": 38.8476456, "lon": -77.0787906 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "bridge": "yes",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "3",
+    "layer": "1",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "paved"
+  }
+},
+{
+  "type": "way",
+  "id": 50661834,
+  "bounds": {
+    "minlat": 38.8476306,
+    "minlon": -77.0785983,
+    "maxlat": 38.8477581,
+    "maxlon": -77.0784964
+  },
+  "nodes": [
+    485358752,
+    645110626
+  ],
+  "geometry": [
+    { "lat": 38.8476306, "lon": -77.0785983 },
+    { "lat": 38.8477581, "lon": -77.0784964 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "bus": "yes",
+    "highway": "motorway",
+    "hov": "designated",
+    "hov:minimum": "3",
+    "lanes": "3",
+    "layer": "1",
+    "maxspeed": "65 mph",
+    "oneway": "reversible",
+    "psv": "yes",
+    "ref": "I 395 EXPR",
+    "sidewalk": "no",
+    "surface": "concrete",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 50661836,
+  "bounds": {
+    "minlat": 38.8477581,
+    "minlon": -77.0784964,
+    "maxlat": 38.8594405,
+    "maxlon": -77.0700329
+  },
+  "nodes": [
+    645110626,
+    485358754,
+    485358755,
+    485358756,
+    485358758,
+    485358759,
+    485358760,
+    485358761,
+    485358762,
+    485358763,
+    13343806762,
+    13343806761,
+    370135608,
+    13343806760,
+    13343806759,
+    645115410
+  ],
+  "geometry": [
+    { "lat": 38.8477581, "lon": -77.0784964 },
+    { "lat": 38.8487072, "lon": -77.0777130 },
+    { "lat": 38.8492018, "lon": -77.0773096 },
+    { "lat": 38.8502646, "lon": -77.0764770 },
+    { "lat": 38.8507326, "lon": -77.0761080 },
+    { "lat": 38.8518421, "lon": -77.0752582 },
+    { "lat": 38.8531456, "lon": -77.0742884 },
+    { "lat": 38.8540412, "lon": -77.0736446 },
+    { "lat": 38.8545158, "lon": -77.0733013 },
+    { "lat": 38.8558645, "lon": -77.0723969 },
+    { "lat": 38.8584668, "lon": -77.0706381 },
+    { "lat": 38.8586609, "lon": -77.0705057 },
+    { "lat": 38.8588584, "lon": -77.0703765 },
+    { "lat": 38.8590688, "lon": -77.0702456 },
+    { "lat": 38.8592676, "lon": -77.0701290 },
+    { "lat": 38.8594405, "lon": -77.0700329 }
+  ],
+  "tags": {
+    "bus": "yes",
+    "highway": "motorway",
+    "hov": "designated",
+    "hov:minimum": "3",
+    "lanes": "3",
+    "maxspeed": "65 mph",
+    "oneway": "reversible",
+    "psv": "yes",
+    "ref": "I 395 EXPR",
+    "sidewalk": "no",
+    "surface": "asphalt",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 122189435,
+  "bounds": {
+    "minlat": 38.8373562,
+    "minlon": -77.0895522,
+    "maxlat": 38.8429745,
+    "maxlon": -77.0823280
+  },
+  "nodes": [
+    485358825,
+    485358826,
+    485358827,
+    485359210,
+    485359212,
+    645095538,
+    63362969,
+    485359213,
+    63756454,
+    63756458,
+    63756461,
+    63756463,
+    63756467,
+    63756469,
+    645099972
+  ],
+  "geometry": [
+    { "lat": 38.8373562, "lon": -77.0895522 },
+    { "lat": 38.8374270, "lon": -77.0894213 },
+    { "lat": 38.8375588, "lon": -77.0891222 },
+    { "lat": 38.8379198, "lon": -77.0883926 },
+    { "lat": 38.8383744, "lon": -77.0875429 },
+    { "lat": 38.8388922, "lon": -77.0867420 },
+    { "lat": 38.8394229, "lon": -77.0860250 },
+    { "lat": 38.8400792, "lon": -77.0852255 },
+    { "lat": 38.8402533, "lon": -77.0850173 },
+    { "lat": 38.8408813, "lon": -77.0843343 },
+    { "lat": 38.8412343, "lon": -77.0839793 },
+    { "lat": 38.8417543, "lon": -77.0834713 },
+    { "lat": 38.8420473, "lon": -77.0831873 },
+    { "lat": 38.8426273, "lon": -77.0826463 },
+    { "lat": 38.8429745, "lon": -77.0823280 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "4",
+    "maxheight": "default",
+    "maxspeed": "65 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 122189439,
+  "bounds": {
+    "minlat": 38.8373499,
+    "minlon": -77.0903054,
+    "maxlat": 38.8408128,
+    "maxlon": -77.0849884
+  },
+  "nodes": [
+    645094537,
+    485359003,
+    485359497,
+    485359499,
+    485359500,
+    485359502,
+    485359504,
+    485359352,
+    485359353,
+    485359031
+  ],
+  "geometry": [
+    { "lat": 38.8408128, "lon": -77.0849884 },
+    { "lat": 38.8404460, "lon": -77.0853872 },
+    { "lat": 38.8402263, "lon": -77.0856203 },
+    { "lat": 38.8397383, "lon": -77.0861525 },
+    { "lat": 38.8394877, "lon": -77.0864461 },
+    { "lat": 38.8391346, "lon": -77.0869369 },
+    { "lat": 38.8387354, "lon": -77.0875429 },
+    { "lat": 38.8383477, "lon": -77.0882381 },
+    { "lat": 38.8378864, "lon": -77.0891823 },
+    { "lat": 38.8373499, "lon": -77.0903054 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "4",
+    "maxspeed": "65 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 122189444,
+  "bounds": {
+    "minlat": 38.8477980,
+    "minlon": -77.0786692,
+    "maxlat": 38.8524070,
+    "maxlon": -77.0750499
+  },
+  "nodes": [
+    645110665,
+    13343789167,
+    13343789166,
+    13343789165,
+    13343789164,
+    13343789163,
+    13343789162,
+    13343789161,
+    13343789160,
+    13343789159,
+    13343789158,
+    13343789157,
+    13343789156,
+    13343789155,
+    645110625
+  ],
+  "geometry": [
+    { "lat": 38.8524070, "lon": -77.0750499 },
+    { "lat": 38.8514531, "lon": -77.0757691 },
+    { "lat": 38.8511710, "lon": -77.0759840 },
+    { "lat": 38.8508957, "lon": -77.0761947 },
+    { "lat": 38.8506056, "lon": -77.0764218 },
+    { "lat": 38.8503257, "lon": -77.0766397 },
+    { "lat": 38.8500466, "lon": -77.0768602 },
+    { "lat": 38.8497657, "lon": -77.0770821 },
+    { "lat": 38.8494771, "lon": -77.0773080 },
+    { "lat": 38.8491907, "lon": -77.0775374 },
+    { "lat": 38.8489196, "lon": -77.0777562 },
+    { "lat": 38.8486364, "lon": -77.0779836 },
+    { "lat": 38.8483596, "lon": -77.0782104 },
+    { "lat": 38.8480853, "lon": -77.0784350 },
+    { "lat": 38.8477980, "lon": -77.0786692 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "3",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 124891276,
+  "bounds": {
+    "minlat": 38.8424882,
+    "minlon": -77.0829556,
+    "maxlat": 38.8430012,
+    "maxlon": -77.0824711
+  },
+  "nodes": [
+    485358778,
+    645099662
+  ],
+  "geometry": [
+    { "lat": 38.8424882, "lon": -77.0829556 },
+    { "lat": 38.8430012, "lon": -77.0824711 }
+  ],
+  "tags": {
+    "bus": "yes",
+    "destination:backward": "Shirlington",
+    "destination:forward": "395 Express Lanes",
+    "destination:ref:forward": "I 395 North",
+    "highway": "motorway_link",
+    "hov": "yes",
+    "hov:minimum": "3",
+    "lanes": "1",
+    "oneway": "reversible",
+    "psv": "yes",
+    "sidewalk": "no",
+    "surface": "asphalt",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 124891277,
+  "bounds": {
+    "minlat": 38.8418628,
+    "minlon": -77.0835443,
+    "maxlat": 38.8424882,
+    "maxlon": -77.0829556
+  },
+  "nodes": [
+    645094368,
+    485358778
+  ],
+  "geometry": [
+    { "lat": 38.8418628, "lon": -77.0835443 },
+    { "lat": 38.8424882, "lon": -77.0829556 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "bus": "yes",
+    "destination:backward": "Shirlington",
+    "destination:forward": "395 Express Lanes",
+    "destination:ref:forward": "I 395 North",
+    "highway": "motorway_link",
+    "hov": "yes",
+    "hov:minimum": "3",
+    "lanes": "1",
+    "layer": "1",
+    "oneway": "reversible",
+    "psv": "yes",
+    "sidewalk": "no",
+    "surface": "concrete",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 182612062,
+  "bounds": {
+    "minlat": 38.8476736,
+    "minlon": -77.0799943,
+    "maxlat": 38.8477434,
+    "maxlon": -77.0796317
+  },
+  "nodes": [
+    1929710821,
+    2732568261,
+    1929710819,
+    5711555712,
+    2732568263,
+    1929710820,
+    1929710822
+  ],
+  "geometry": [
+    { "lat": 38.8476909, "lon": -77.0796317 },
+    { "lat": 38.8476766, "lon": -77.0797308 },
+    { "lat": 38.8476736, "lon": -77.0797967 },
+    { "lat": 38.8476770, "lon": -77.0798326 },
+    { "lat": 38.8476807, "lon": -77.0798573 },
+    { "lat": 38.8477004, "lon": -77.0799152 },
+    { "lat": 38.8477434, "lon": -77.0799943 }
+  ],
+  "tags": {
+    "destination": "Glebe Road;Marymount University",
+    "destination:ref": "VA 120 North",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 465565685,
+  "bounds": {
+    "minlat": 38.8401967,
+    "minlon": -77.0862311,
+    "maxlat": 38.8427068,
+    "maxlon": -77.0832949
+  },
+  "nodes": [
+    485358992,
+    63715321,
+    63715320,
+    63715319,
+    63720092,
+    63720098,
+    63720102,
+    63720104,
+    63720109,
+    63720110,
+    485359471,
+    485359472,
+    4270162495,
+    1929710818
+  ],
+  "geometry": [
+    { "lat": 38.8427068, "lon": -77.0832949 },
+    { "lat": 38.8423260, "lon": -77.0836920 },
+    { "lat": 38.8422190, "lon": -77.0838100 },
+    { "lat": 38.8420900, "lon": -77.0839750 },
+    { "lat": 38.8419380, "lon": -77.0841950 },
+    { "lat": 38.8418650, "lon": -77.0842990 },
+    { "lat": 38.8417810, "lon": -77.0844340 },
+    { "lat": 38.8415220, "lon": -77.0848670 },
+    { "lat": 38.8413120, "lon": -77.0851660 },
+    { "lat": 38.8411265, "lon": -77.0853777 },
+    { "lat": 38.8409594, "lon": -77.0855837 },
+    { "lat": 38.8406652, "lon": -77.0858583 },
+    { "lat": 38.8406045, "lon": -77.0859080 },
+    { "lat": 38.8401967, "lon": -77.0862311 }
+  ],
+  "tags": {
+    "destination": "Quaker Lane",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "maxspeed:advisory": "30 mph",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Alexandria, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 507003830,
+  "bounds": {
+    "minlat": 38.8449570,
+    "minlon": -77.0794069,
+    "maxlat": 38.8451334,
+    "maxlon": -77.0782362
+  },
+  "nodes": [
+    645110634,
+    8379186618,
+    8379186617,
+    6848537366,
+    8379186619,
+    645110637,
+    6848537370,
+    645110639,
+    5711555628,
+    2876609897
+  ],
+  "geometry": [
+    { "lat": 38.8449570, "lon": -77.0794069 },
+    { "lat": 38.8449727, "lon": -77.0792563 },
+    { "lat": 38.8450056, "lon": -77.0791073 },
+    { "lat": 38.8450886, "lon": -77.0787910 },
+    { "lat": 38.8451102, "lon": -77.0787005 },
+    { "lat": 38.8451269, "lon": -77.0786074 },
+    { "lat": 38.8451334, "lon": -77.0785122 },
+    { "lat": 38.8451324, "lon": -77.0784269 },
+    { "lat": 38.8451247, "lon": -77.0783704 },
+    { "lat": 38.8450946, "lon": -77.0782362 }
+  ],
+  "tags": {
+    "destination:ref": "VA 120 South",
+    "destination:street": "Glebe Road",
+    "highway": "motorway_link",
+    "junction:ref": "7A",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Arlington, VA",
+    "turn:lanes": "right|right"
+  }
+},
+{
+  "type": "way",
+  "id": 512278512,
+  "bounds": {
+    "minlat": 38.8496605,
+    "minlon": -77.0773510,
+    "maxlat": 38.8524070,
+    "maxlon": -77.0750499
+  },
+  "nodes": [
+    645110665,
+    13343789154,
+    13343789168,
+    485358950,
+    13343789169,
+    63332434,
+    8163577909
+  ],
+  "geometry": [
+    { "lat": 38.8524070, "lon": -77.0750499 },
+    { "lat": 38.8520628, "lon": -77.0754085 },
+    { "lat": 38.8510348, "lon": -77.0761873 },
+    { "lat": 38.8508522, "lon": -77.0763292 },
+    { "lat": 38.8507062, "lon": -77.0764556 },
+    { "lat": 38.8498574, "lon": -77.0771902 },
+    { "lat": 38.8496605, "lon": -77.0773510 }
+  ],
+  "tags": {
+    "destination": "Glebe Road;Shirlington",
+    "destination:ref": "VA 120",
+    "highway": "motorway_link",
+    "junction:ref": "7",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Arlington, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 512295095,
+  "bounds": {
+    "minlat": 38.8457045,
+    "minlon": -77.0785565,
+    "maxlat": 38.8467440,
+    "maxlon": -77.0780400
+  },
+  "nodes": [
+    63329202,
+    645110859,
+    5711399958,
+    645110861,
+    645110864,
+    645110867,
+    645110597
+  ],
+  "geometry": [
+    { "lat": 38.8457045, "lon": -77.0785418 },
+    { "lat": 38.8458164, "lon": -77.0785524 },
+    { "lat": 38.8458444, "lon": -77.0785565 },
+    { "lat": 38.8459145, "lon": -77.0785549 },
+    { "lat": 38.8459978, "lon": -77.0785386 },
+    { "lat": 38.8460880, "lon": -77.0784920 },
+    { "lat": 38.8467440, "lon": -77.0780400 }
+  ],
+  "tags": {
+    "destination": "Washington;Richmond",
+    "destination:ref:to": "I 395",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Arlington, VA",
+    "turn:lanes": "slight_left;through"
+  }
+},
+{
+  "type": "way",
+  "id": 512313288,
+  "bounds": {
+    "minlat": 38.8373562,
+    "minlon": -77.0895522,
+    "maxlat": 38.8378128,
+    "maxlon": -77.0883368
+  },
+  "nodes": [
+    485358825,
+    6988734697,
+    10302471663
+  ],
+  "geometry": [
+    { "lat": 38.8373562, "lon": -77.0895522 },
+    { "lat": 38.8374024, "lon": -77.0892466 },
+    { "lat": 38.8378128, "lon": -77.0883368 }
+  ],
+  "tags": {
+    "destination": "Shirlington",
+    "highway": "motorway_link",
+    "junction:ref": "6",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Arlington, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 512313289,
+  "bounds": {
+    "minlat": 38.8433428,
+    "minlon": -77.0827208,
+    "maxlat": 38.8434191,
+    "maxlon": -77.0826727
+  },
+  "nodes": [
+    63715336,
+    645099346
+  ],
+  "geometry": [
+    { "lat": 38.8434191, "lon": -77.0826727 },
+    { "lat": 38.8433428, "lon": -77.0827208 }
+  ],
+  "tags": {
+    "destination": "Richmond;Quaker Lane",
+    "destination:ref": "I 395 South",
+    "highway": "motorway_link",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Alexandria, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 537767142,
+  "bounds": {
+    "minlat": 38.8475598,
+    "minlon": -77.0798854,
+    "maxlat": 38.8476909,
+    "maxlon": -77.0796317
+  },
+  "nodes": [
+    1929710821,
+    5711555711,
+    63332439
+  ],
+  "geometry": [
+    { "lat": 38.8476909, "lon": -77.0796317 },
+    { "lat": 38.8475927, "lon": -77.0798215 },
+    { "lat": 38.8475598, "lon": -77.0798854 }
+  ],
+  "tags": {
+    "destination": "Glebe Road",
+    "destination:ref": "VA 120 South",
+    "highway": "motorway_link",
+    "lane_markings": "no",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 569945823,
+  "bounds": {
+    "minlat": 38.8430260,
+    "minlon": -77.0855659,
+    "maxlat": 38.8431202,
+    "maxlon": -77.0852590
+  },
+  "nodes": [
+    63718654,
+    5480180340,
+    5480180339,
+    5480180338
+  ],
+  "geometry": [
+    { "lat": 38.8430260, "lon": -77.0852590 },
+    { "lat": 38.8430387, "lon": -77.0853809 },
+    { "lat": 38.8430638, "lon": -77.0854707 },
+    { "lat": 38.8431202, "lon": -77.0855659 }
+  ],
+  "tags": {
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 585200306,
+  "bounds": {
+    "minlat": 38.8431202,
+    "minlon": -77.0856672,
+    "maxlat": 38.8432591,
+    "maxlon": -77.0855659
+  },
+  "nodes": [
+    5480180338,
+    5480180337,
+    5480180336,
+    5676656246
+  ],
+  "geometry": [
+    { "lat": 38.8431202, "lon": -77.0855659 },
+    { "lat": 38.8431589, "lon": -77.0856102 },
+    { "lat": 38.8431922, "lon": -77.0856410 },
+    { "lat": 38.8432591, "lon": -77.0856672 }
+  ],
+  "tags": {
+    "bridge": "yes",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "layer": "1",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 590669431,
+  "bounds": {
+    "minlat": 38.8347796,
+    "minlon": -77.0969261,
+    "maxlat": 38.8363079,
+    "maxlon": -77.0919251
+  },
+  "nodes": [
+    1393203134,
+    485358816,
+    485358817,
+    485358818,
+    485358819,
+    485358820,
+    485358821,
+    485358822
+  ],
+  "geometry": [
+    { "lat": 38.8347796, "lon": -77.0969261 },
+    { "lat": 38.8349179, "lon": -77.0964178 },
+    { "lat": 38.8350316, "lon": -77.0959887 },
+    { "lat": 38.8351987, "lon": -77.0953621 },
+    { "lat": 38.8355397, "lon": -77.0941948 },
+    { "lat": 38.8359676, "lon": -77.0928902 },
+    { "lat": 38.8360662, "lon": -77.0926027 },
+    { "lat": 38.8363079, "lon": -77.0919251 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "4",
+    "maxheight": "default",
+    "maxspeed": "65 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 590669436,
+  "bounds": {
+    "minlat": 38.8330193,
+    "minlon": -77.1046133,
+    "maxlat": 38.8365955,
+    "maxlon": -77.0920487
+  },
+  "nodes": [
+    485359216,
+    485359361,
+    485359365,
+    485359366,
+    485359367,
+    63714500,
+    63756540,
+    63719649,
+    63756543,
+    63756545,
+    63716878
+  ],
+  "geometry": [
+    { "lat": 38.8365955, "lon": -77.0920487 },
+    { "lat": 38.8364557, "lon": -77.0923923 },
+    { "lat": 38.8361949, "lon": -77.0931305 },
+    { "lat": 38.8355865, "lon": -77.0951303 },
+    { "lat": 38.8350182, "lon": -77.0971989 },
+    { "lat": 38.8343733, "lon": -77.0996513 },
+    { "lat": 38.8342383, "lon": -77.1001203 },
+    { "lat": 38.8340713, "lon": -77.1007103 },
+    { "lat": 38.8338023, "lon": -77.1017093 },
+    { "lat": 38.8334243, "lon": -77.1031313 },
+    { "lat": 38.8330193, "lon": -77.1046133 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "4",
+    "maxspeed": "65 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 590669495,
+  "bounds": {
+    "minlat": 38.8437632,
+    "minlon": -77.0815969,
+    "maxlat": 38.8445011,
+    "maxlon": -77.0809520
+  },
+  "nodes": [
+    645099944,
+    645110629
+  ],
+  "geometry": [
+    { "lat": 38.8437632, "lon": -77.0815969 },
+    { "lat": 38.8445011, "lon": -77.0809520 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "destination:lanes": "||||Glebe Road",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "horse": "no",
+    "lanes": "5",
+    "maxspeed": "70 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt",
+    "turn:lanes": "||||slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 591112160,
+  "bounds": {
+    "minlat": 38.8363079,
+    "minlon": -77.0919251,
+    "maxlat": 38.8373562,
+    "maxlon": -77.0895522
+  },
+  "nodes": [
+    485358822,
+    485358824,
+    485358825
+  ],
+  "geometry": [
+    { "lat": 38.8363079, "lon": -77.0919251 },
+    { "lat": 38.8367149, "lon": -77.0909215 },
+    { "lat": 38.8373562, "lon": -77.0895522 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "destination:lanes": "none|none|none|Arlington;Shirlington",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "4",
+    "maxspeed": "65 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt",
+    "turn:lanes": "none|none|none|through;slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 591112161,
+  "bounds": {
+    "minlat": 38.8365955,
+    "minlon": -77.0920487,
+    "maxlat": 38.8373499,
+    "maxlon": -77.0903054
+  },
+  "nodes": [
+    485359031,
+    485359355,
+    485359357,
+    485359216
+  ],
+  "geometry": [
+    { "lat": 38.8373499, "lon": -77.0903054 },
+    { "lat": 38.8371443, "lon": -77.0907358 },
+    { "lat": 38.8369237, "lon": -77.0912422 },
+    { "lat": 38.8365955, "lon": -77.0920487 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "destination:lanes": "|||Seminary Road|King Street",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "5",
+    "maxspeed": "65 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt",
+    "turn:lanes": "||||slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 591112163,
+  "bounds": {
+    "minlat": 38.8447832,
+    "minlon": -77.0810261,
+    "maxlat": 38.8461109,
+    "maxlon": -77.0798750
+  },
+  "nodes": [
+    485358784,
+    485359325,
+    6988711371
+  ],
+  "geometry": [
+    { "lat": 38.8447832, "lon": -77.0810261 },
+    { "lat": 38.8457713, "lon": -77.0801694 },
+    { "lat": 38.8461109, "lon": -77.0798750 }
+  ],
+  "tags": {
+    "bus": "yes",
+    "highway": "motorway",
+    "hov": "designated",
+    "hov:minimum": "3",
+    "lanes": "4",
+    "maxspeed": "65 mph",
+    "oneway": "reversible",
+    "psv": "yes",
+    "ref": "I 395 EXPR",
+    "sidewalk": "no",
+    "surface": "asphalt",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no",
+    "turn:lanes:backward": "slight_left|none|none|none",
+    "turn:lanes:forward": "none|none|none|merge_to_left"
+  }
+},
+{
+  "type": "way",
+  "id": 658362634,
+  "bounds": {
+    "minlat": 38.8474990,
+    "minlon": -77.0794979,
+    "maxlat": 38.8489341,
+    "maxlon": -77.0779439
+  },
+  "nodes": [
+    485358951,
+    485358963,
+    485358964,
+    485358966,
+    485358967,
+    1692601018
+  ],
+  "geometry": [
+    { "lat": 38.8489341, "lon": -77.0779439 },
+    { "lat": 38.8485884, "lon": -77.0782238 },
+    { "lat": 38.8483530, "lon": -77.0784378 },
+    { "lat": 38.8481033, "lon": -77.0786878 },
+    { "lat": 38.8478736, "lon": -77.0789628 },
+    { "lat": 38.8474990, "lon": -77.0794979 }
+  ],
+  "tags": {
+    "destination": "Shirlington;Quaker Lane",
+    "highway": "motorway_link",
+    "junction:ref": "7",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Alexandria, VA:Arlington, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 695842792,
+  "bounds": {
+    "minlat": 38.8445011,
+    "minlon": -77.0809520,
+    "maxlat": 38.8463463,
+    "maxlon": -77.0794273
+  },
+  "nodes": [
+    645110629,
+    485358750
+  ],
+  "geometry": [
+    { "lat": 38.8445011, "lon": -77.0809520 },
+    { "lat": 38.8463463, "lon": -77.0794273 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "4",
+    "maxspeed": "70 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 746820996,
+  "bounds": {
+    "minlat": 38.8323898,
+    "minlon": -77.1061967,
+    "maxlat": 38.8430238,
+    "maxlon": -77.0826228
+  },
+  "nodes": [
+    6988637012,
+    63756867,
+    63756869,
+    63756873,
+    63756876,
+    63719655,
+    63756878,
+    63756881,
+    63756883,
+    63756885,
+    63756887,
+    63362962,
+    63362963,
+    485359297,
+    6988711354,
+    6988711355,
+    6988711352,
+    6988711317,
+    6988711383,
+    6988711382,
+    6988711364,
+    6988711384,
+    63330604,
+    6988711346,
+    6988711363,
+    63331706,
+    63331707,
+    485359345,
+    485359346,
+    63756494,
+    63756496,
+    63756498,
+    63715260,
+    63756503,
+    63756506,
+    63756510,
+    645099732
+  ],
+  "geometry": [
+    { "lat": 38.8323898, "lon": -77.1061967 },
+    { "lat": 38.8325693, "lon": -77.1055913 },
+    { "lat": 38.8332483, "lon": -77.1032053 },
+    { "lat": 38.8333913, "lon": -77.1026613 },
+    { "lat": 38.8337283, "lon": -77.1014153 },
+    { "lat": 38.8339373, "lon": -77.1006533 },
+    { "lat": 38.8340073, "lon": -77.1004023 },
+    { "lat": 38.8340367, "lon": -77.1002921 },
+    { "lat": 38.8341003, "lon": -77.1000603 },
+    { "lat": 38.8342543, "lon": -77.0994993 },
+    { "lat": 38.8347033, "lon": -77.0979103 },
+    { "lat": 38.8348280, "lon": -77.0974203 },
+    { "lat": 38.8349915, "lon": -77.0968470 },
+    { "lat": 38.8354662, "lon": -77.0950273 },
+    { "lat": 38.8358331, "lon": -77.0938281 },
+    { "lat": 38.8359525, "lon": -77.0934472 },
+    { "lat": 38.8361668, "lon": -77.0927901 },
+    { "lat": 38.8363873, "lon": -77.0921766 },
+    { "lat": 38.8367584, "lon": -77.0912346 },
+    { "lat": 38.8369420, "lon": -77.0907976 },
+    { "lat": 38.8372825, "lon": -77.0900498 },
+    { "lat": 38.8374755, "lon": -77.0896471 },
+    { "lat": 38.8379599, "lon": -77.0886759 },
+    { "lat": 38.8383095, "lon": -77.0880014 },
+    { "lat": 38.8385871, "lon": -77.0875151 },
+    { "lat": 38.8390239, "lon": -77.0868216 },
+    { "lat": 38.8392970, "lon": -77.0864357 },
+    { "lat": 38.8395377, "lon": -77.0861353 },
+    { "lat": 38.8402062, "lon": -77.0853886 },
+    { "lat": 38.8409043, "lon": -77.0846463 },
+    { "lat": 38.8413093, "lon": -77.0842413 },
+    { "lat": 38.8415713, "lon": -77.0839833 },
+    { "lat": 38.8417133, "lon": -77.0838583 },
+    { "lat": 38.8418523, "lon": -77.0837283 },
+    { "lat": 38.8424433, "lon": -77.0831483 },
+    { "lat": 38.8427693, "lon": -77.0828573 },
+    { "lat": 38.8430238, "lon": -77.0826228 }
+  ],
+  "tags": {
+    "bus": "yes",
+    "highway": "motorway",
+    "hov": "designated",
+    "hov:minimum": "3",
+    "lanes": "3",
+    "maxspeed": "65 mph",
+    "oneway": "reversible",
+    "ref": "I 395 EXPR",
+    "sidewalk": "no",
+    "surface": "asphalt",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 746827542,
+  "bounds": {
+    "minlat": 38.8461109,
+    "minlon": -77.0798750,
+    "maxlat": 38.8464998,
+    "maxlon": -77.0795378
+  },
+  "nodes": [
+    6988711371,
+    485358769
+  ],
+  "geometry": [
+    { "lat": 38.8461109, "lon": -77.0798750 },
+    { "lat": 38.8464998, "lon": -77.0795378 }
+  ],
+  "tags": {
+    "bus": "yes",
+    "highway": "motorway",
+    "hov": "designated",
+    "hov:minimum": "3",
+    "lanes": "3",
+    "maxspeed": "65 mph",
+    "oneway": "reversible",
+    "psv": "yes",
+    "ref": "I 395 EXPR",
+    "sidewalk": "no",
+    "surface": "asphalt",
+    "toll": "yes",
+    "toll:bus": "no",
+    "toll:hov": "no",
+    "toll:motorcycle": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 872965150,
+  "bounds": {
+    "minlat": 38.8468549,
+    "minlon": -77.0790186,
+    "maxlat": 38.8475813,
+    "maxlon": -77.0784321
+  },
+  "nodes": [
+    63331541,
+    645110568
+  ],
+  "geometry": [
+    { "lat": 38.8468549, "lon": -77.0790186 },
+    { "lat": 38.8475813, "lon": -77.0784321 }
+  ],
+  "tags": {
+    "bicycle": "no",
+    "foot": "no",
+    "hgv": "designated",
+    "hgv:national_network": "yes",
+    "highway": "motorway",
+    "lanes": "4",
+    "maxspeed": "55 mph",
+    "name": "Henry G. Shirley Memorial Highway",
+    "name:etymology:wikidata": "Q5721726",
+    "oneway": "yes",
+    "ref": "I 395",
+    "short_name": "Shirley Highway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 874049269,
+  "bounds": {
+    "minlat": 38.8470946,
+    "minlon": -77.0778589,
+    "maxlat": 38.8479622,
+    "maxlon": -77.0777270
+  },
+  "nodes": [
+    6988711292,
+    6988711325,
+    6988711301,
+    6988711300,
+    645110615,
+    6988734692
+  ],
+  "geometry": [
+    { "lat": 38.8470946, "lon": -77.0778589 },
+    { "lat": 38.8471760, "lon": -77.0778352 },
+    { "lat": 38.8472628, "lon": -77.0778171 },
+    { "lat": 38.8473712, "lon": -77.0777990 },
+    { "lat": 38.8479127, "lon": -77.0777373 },
+    { "lat": 38.8479622, "lon": -77.0777270 }
+  ],
+  "tags": {
+    "destination": "Washington",
+    "destination:ref": "I 395 North",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 874049270,
+  "bounds": {
+    "minlat": 38.8479622,
+    "minlon": -77.0777270,
+    "maxlat": 38.8491159,
+    "maxlon": -77.0771634
+  },
+  "nodes": [
+    6988734692,
+    645110617,
+    645110620,
+    645110622,
+    63329285
+  ],
+  "geometry": [
+    { "lat": 38.8479622, "lon": -77.0777270 },
+    { "lat": 38.8481445, "lon": -77.0776891 },
+    { "lat": 38.8483889, "lon": -77.0775871 },
+    { "lat": 38.8486124, "lon": -77.0774772 },
+    { "lat": 38.8491159, "lon": -77.0771634 }
+  ],
+  "tags": {
+    "destination": "Washington",
+    "destination:ref": "I 395 North",
+    "highway": "motorway_link",
+    "lanes": "1",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 874678706,
+  "bounds": {
+    "minlat": 38.8407728,
+    "minlon": -77.0839038,
+    "maxlat": 38.8418710,
+    "maxlon": -77.0831253
+  },
+  "nodes": [
+    645094802,
+    645094927,
+    63714039,
+    63714043,
+    63714045,
+    8142359685
+  ],
+  "geometry": [
+    { "lat": 38.8407728, "lon": -77.0839038 },
+    { "lat": 38.8411233, "lon": -77.0836838 },
+    { "lat": 38.8413060, "lon": -77.0835760 },
+    { "lat": 38.8414460, "lon": -77.0834750 },
+    { "lat": 38.8417980, "lon": -77.0831900 },
+    { "lat": 38.8418710, "lon": -77.0831253 }
+  ],
+  "tags": {
+    "destination": "Washington",
+    "destination:ref": "I 395 North",
+    "highway": "motorway_link",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Alexandria, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 877412410,
+  "bounds": {
+    "minlat": 38.8489341,
+    "minlon": -77.0779439,
+    "maxlat": 38.8496605,
+    "maxlon": -77.0773510
+  },
+  "nodes": [
+    8163577909,
+    485358951
+  ],
+  "geometry": [
+    { "lat": 38.8496605, "lon": -77.0773510 },
+    { "lat": 38.8489341, "lon": -77.0779439 }
+  ],
+  "tags": {
+    "destination": "Shirlington;Marymount University",
+    "destination:lanes": "Shirlington;Quaker Lane|Glebe Road;Marymount University",
+    "destination:ref": "VA 120",
+    "destination:street": "Glebe Road;Quaker Lane",
+    "highway": "motorway_link",
+    "junction:ref": "7",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Arlington, VA",
+    "tiger:reviewed": "no",
+    "turn:lanes": "none|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 877518829,
+  "bounds": {
+    "minlat": 38.8341624,
+    "minlon": -77.0957397,
+    "maxlat": 38.8352526,
+    "maxlon": -77.0943403
+  },
+  "nodes": [
+    63329561,
+    485359238,
+    485359239,
+    485359242,
+    485359248,
+    8164638919
+  ],
+  "geometry": [
+    { "lat": 38.8341624, "lon": -77.0957397 },
+    { "lat": 38.8344299, "lon": -77.0955423 },
+    { "lat": 38.8346906, "lon": -77.0952934 },
+    { "lat": 38.8348979, "lon": -77.0950188 },
+    { "lat": 38.8350784, "lon": -77.0947269 },
+    { "lat": 38.8352526, "lon": -77.0943403 }
+  ],
+  "tags": {
+    "destination": "Washington",
+    "destination:ref": "I 395 North",
+    "highway": "motorway_link",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Arlington, VA"
+  }
+},
+{
+  "type": "way",
+  "id": 930293828,
+  "bounds": {
+    "minlat": 38.8434191,
+    "minlon": -77.0826727,
+    "maxlat": 38.8448967,
+    "maxlon": -77.0813284
+  },
+  "nodes": [
+    63329265,
+    63715341,
+    63715336
+  ],
+  "geometry": [
+    { "lat": 38.8448967, "lon": -77.0813284 },
+    { "lat": 38.8439008, "lon": -77.0822191 },
+    { "lat": 38.8434191, "lon": -77.0826727 }
+  ],
+  "tags": {
+    "destination": "Shirlington;Quaker Lane",
+    "destination:lanes": "Richmond|Quaker Lane;Shirlington",
+    "highway": "motorway_link",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "turn:lanes": "none|through;slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 1096734050,
+  "bounds": {
+    "minlat": 38.8474894,
+    "minlon": -77.0799462,
+    "maxlat": 38.8475598,
+    "maxlon": -77.0798854
+  },
+  "nodes": [
+    63332439,
+    2876610105
+  ],
+  "geometry": [
+    { "lat": 38.8475598, "lon": -77.0798854 },
+    { "lat": 38.8474894, "lon": -77.0799462 }
+  ],
+  "tags": {
+    "destination": "Glebe Road",
+    "destination:ref": "VA 120 South",
+    "highway": "motorway_link",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1126695457,
+  "bounds": {
+    "minlat": 38.8378128,
+    "minlon": -77.0883368,
+    "maxlat": 38.8378864,
+    "maxlon": -77.0881781
+  },
+  "nodes": [
+    10302471663,
+    63330580
+  ],
+  "geometry": [
+    { "lat": 38.8378128, "lon": -77.0883368 },
+    { "lat": 38.8378864, "lon": -77.0881781 }
+  ],
+  "tags": {
+    "destination": "Shirlington",
+    "destination:lanes": "Shirlington|Quaker Lane",
+    "highway": "motorway_link",
+    "junction:ref": "6",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Arlington, VA",
+    "turn:lanes": "|slight_right"
+  }
+},
+{
+  "type": "way",
+  "id": 1134757904,
+  "bounds": {
+    "minlat": 38.8429842,
+    "minlon": -77.0856403,
+    "maxlat": 38.8430260,
+    "maxlon": -77.0852590
+  },
+  "nodes": [
+    63718654,
+    63718651,
+    63718646,
+    12842618557,
+    5676656247
+  ],
+  "geometry": [
+    { "lat": 38.8430260, "lon": -77.0852590 },
+    { "lat": 38.8430220, "lon": -77.0853820 },
+    { "lat": 38.8430130, "lon": -77.0854940 },
+    { "lat": 38.8430015, "lon": -77.0855672 },
+    { "lat": 38.8429842, "lon": -77.0856403 }
+  ],
+  "tags": {
+    "highway": "motorway_link",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Alexandria, VA",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 1134757905,
+  "bounds": {
+    "minlat": 38.8430260,
+    "minlon": -77.0852590,
+    "maxlat": 38.8430277,
+    "maxlon": -77.0845181
+  },
+  "nodes": [
+    63718666,
+    63718658,
+    63718654
+  ],
+  "geometry": [
+    { "lat": 38.8430277, "lon": -77.0845181 },
+    { "lat": 38.8430260, "lon": -77.0848200 },
+    { "lat": 38.8430260, "lon": -77.0852590 }
+  ],
+  "tags": {
+    "highway": "motorway_link",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Alexandria, VA",
+    "tiger:reviewed": "no",
+    "turn:lanes": "|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 1166292208,
+  "bounds": {
+    "minlat": 38.8389425,
+    "minlon": -77.0875865,
+    "maxlat": 38.8400951,
+    "maxlon": -77.0862926
+  },
+  "nodes": [
+    485359044,
+    485359043,
+    485359041,
+    485359040,
+    10848149862
+  ],
+  "geometry": [
+    { "lat": 38.8400951, "lon": -77.0862926 },
+    { "lat": 38.8397383, "lon": -77.0866159 },
+    { "lat": 38.8394307, "lon": -77.0869764 },
+    { "lat": 38.8390630, "lon": -77.0874227 },
+    { "lat": 38.8389425, "lon": -77.0875865 }
+  ],
+  "tags": {
+    "destination": "Richmond",
+    "destination:ref": "I 395 South",
+    "highway": "motorway_link",
+    "lanes": "2",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:county": "Arlington, VA"
+  }
+}
+
+  ]
+}

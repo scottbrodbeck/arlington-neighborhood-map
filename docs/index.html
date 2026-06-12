@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arlington Neighborhood Lookup — ARLnow</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="map"></div>
+
+  <div id="panel">
+    <h1>Arlington Neighborhood Lookup</h1>
+    <form id="search-form" autocomplete="off">
+      <input id="search-input" type="text"
+             placeholder="Address or block — e.g. 3100 Columbia Pike"
+             aria-label="Search for an address or block">
+      <button type="submit">Search</button>
+    </form>
+    <div id="result" hidden></div>
+    <div id="hint">Search an address (<i>3100 Columbia Pike</i>) or a block
+      (<i>2000 block of N Quincy St</i>) — or click anywhere on the map.</div>
+  </div>
+
+  <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
