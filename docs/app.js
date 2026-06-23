@@ -1,22 +1,17 @@
-/* ARLnow Arlington Neighborhood Lookup */
-'use strict';
+/* ARLnow Arlington Neighborhood Lookup — browser app.
+ * The border algorithm lives in ./classify.js (shared with the MCP server).
+ * This file owns the map, the DOM, and the two browser geocoders. */
 
-// A point within this distance (meters) of another neighborhood is reported
-// as "on the border of". Tuned against real geocoder output: address points
-// are building centroids, typically 30-70 m from a boundary street's
-// centerline (1015 N Quincy St sits 66 m from the Ballston divider), while
-// a typical Arlington block is 150-250 m deep.
-const BORDER_M = 80;
-const EDGE_M = 1;          // treat as "inside" when this close to an edge
+import { classify, inCounty, parseBlock, describe } from './classify.js';
 
-// Actual Arlington County bounds (includes DCA, the Pentagon, the cemetery —
-// county land that has no neighborhood polygon).
-const COUNTY_BBOX = [-77.1723, 38.8275, -77.0310, 38.9344];
 const ARL_GEOCODER =
   'https://arlgis.arlingtonva.us/arcgis/rest/services/Geoprocessing/' +
   'Composite_AddPnt_Stnet/GeocodeServer/findAddressCandidates';
 const CENSUS_GEOCODER =
   'https://geocoding.geo.census.gov/geocoder/locations/onelineaddress';
+
+// Arlington County bounds — used only to constrain the map's pannable area.
+const COUNTY_BBOX = [-77.1723, 38.8275, -77.0310, 38.9344];
 
 let hoods = null;          // FeatureCollection of neighborhood polygons
 let countyRing = null;     // simplified Arlington County outline
@@ -119,93 +114,9 @@ map.on('load', async () => {
 
   map.on('click', (e) => {
     placeMarker(e.lngLat.lng, e.lngLat.lat);
-    renderResult('Clicked point', classify(e.lngLat.lng, e.lngLat.lat), null);
+    renderResult('Clicked point', classify(hoods, countyRing, e.lngLat.lng, e.lngLat.lat), null);
   });
 });
-
-// ---------------------------------------------------------------- geometry
-
-// Meters in a local flat projection around (lng0, lat0) — fine at sub-km scale.
-function toMeters(lng, lat, lng0, lat0) {
-  return [
-    (lng - lng0) * 111320 * Math.cos((lat0 * Math.PI) / 180),
-    (lat - lat0) * 111320,
-  ];
-}
-
-// Even-odd ray casting over one ring ([[lng,lat], ...]).
-function ringContains(ring, lng, lat) {
-  let inside = false;
-  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const [xi, yi] = ring[i];
-    const [xj, yj] = ring[j];
-    if (((yi > lat) !== (yj > lat)) &&
-        lng < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) {
-      inside = !inside;
-    }
-  }
-  return inside;
-}
-
-// Even-odd across all rings of a MultiPolygon handles holes automatically.
-function featureContains(feature, lng, lat) {
-  let inside = false;
-  for (const poly of feature.geometry.coordinates) {
-    for (const ring of poly) {
-      if (ringContains(ring, lng, lat)) inside = !inside;
-    }
-  }
-  return inside;
-}
-
-// Min distance (meters) from point to any boundary segment of the feature.
-function featureDistance(feature, lng, lat) {
-  let best = Infinity;
-  for (const poly of feature.geometry.coordinates) {
-    for (const ring of poly) {
-      for (let i = 1; i < ring.length; i++) {
-        const [ax, ay] = toMeters(ring[i - 1][0], ring[i - 1][1], lng, lat);
-        const [bx, by] = toMeters(ring[i][0], ring[i][1], lng, lat);
-        const dx = bx - ax, dy = by - ay;
-        const len2 = dx * dx + dy * dy;
-        const t = len2 ? Math.max(0, Math.min(1, -(ax * dx + ay * dy) / len2)) : 0;
-        const px = ax + t * dx, py = ay + t * dy;
-        best = Math.min(best, Math.hypot(px, py));
-      }
-    }
-  }
-  return best;
-}
-
-function inCounty(lng, lat) {
-  return countyRing ? ringContains(countyRing, lng, lat) : true;
-}
-
-// -> { kind: 'inside'|'unassigned'|'outside', primary, partners: [{name,d}], nearest }
-function classify(lng, lat) {
-  const containing = [];
-  const dists = [];
-  for (const f of hoods.features) {
-    const inside = featureContains(f, lng, lat);
-    if (inside) containing.push(f.properties.name);
-    else dists.push({ name: f.properties.name, d: featureDistance(f, lng, lat) });
-  }
-  dists.sort((a, b) => a.d - b.d);
-
-  if (containing.length === 0) {
-    if (dists[0] && dists[0].d <= EDGE_M) {
-      containing.push(dists.shift().name);   // numerically on an edge
-    } else {
-      if (!inCounty(lng, lat) || !dists[0]) return { kind: 'outside' };
-      return { kind: 'unassigned', nearest: dists[0] };
-    }
-  }
-
-  const partners = containing.slice(1).map((name) => ({ name, d: 0 }))
-    .concat(dists.filter((x) => x.d <= BORDER_M))
-    .slice(0, 2);
-  return { kind: 'inside', primary: containing[0], partners };
-}
 
 // --------------------------------------------------------------- geocoding
 
@@ -244,7 +155,7 @@ function geocodeCensus(query) {
       const m = data?.result?.addressMatches?.[0];
       if (!m) return resolve(null);
       const { x, y } = m.coordinates;
-      if (!inCounty(x, y)) return resolve(null);
+      if (!inCounty(countyRing, x, y)) return resolve(null);
       resolve({ lng: x, lat: y, matched: m.matchedAddress,
                 source: 'U.S. Census geocoder (fallback)' });
     };
@@ -272,9 +183,7 @@ form.addEventListener('submit', async (e) => {
   if (!raw) return;
   await dataReady;
 
-  // "2000 block of N Quincy St" -> geocode mid-block as 2050 N Quincy St
-  const blockMatch = raw.match(/^(?:the\s+)?(\d{2,5})\s+block\s+of\s+(.+)$/i);
-  const query = blockMatch ? `${+blockMatch[1] + 50} ${blockMatch[2]}` : raw;
+  const query = parseBlock(raw); // "2000 block of N Quincy St" -> "2050 N Quincy St"
 
   showMessage('Searching…');
   let geo = null;
@@ -288,7 +197,7 @@ form.addEventListener('submit', async (e) => {
 
   placeMarker(geo.lng, geo.lat);
   map.flyTo({ center: [geo.lng, geo.lat], zoom: 15.5 });
-  renderResult(raw, classify(geo.lng, geo.lat), geo);
+  renderResult(raw, classify(hoods, countyRing, geo.lng, geo.lat), geo);
 });
 
 function placeMarker(lng, lat) {
@@ -303,11 +212,6 @@ function showMessage(text, isError = false) {
   resultEl.firstChild.textContent = text;
 }
 
-function fmtDistance(m) {
-  const feet = m * 3.28084;
-  return feet < 1000 ? `${Math.round(feet / 10) * 10} feet` : `${(m / 1609.34).toFixed(1)} miles`;
-}
-
 function esc(s) {
   const div = document.createElement('div');
   div.textContent = s;
@@ -318,22 +222,19 @@ function renderResult(label, res, geo) {
   hintEl.hidden = true;
   resultEl.hidden = false;
 
+  const d = describe(res);
   let html = '';
-  if (res.kind === 'outside') {
+  if (d.status === 'outside_arlington') {
     html = `<div class="headline">That point is outside Arlington County.</div>`;
-  } else if (res.kind === 'unassigned') {
+  } else if (d.status === 'unassigned') {
     html = `<div class="headline"><b>${esc(label)}</b> isn't in any neighborhood —
       the Pentagon, Arlington National Cemetery, Reagan National Airport, parkway land
       and some parks are unassigned. The nearest neighborhood is
-      <b>${esc(res.nearest.name)}</b>, about ${fmtDistance(res.nearest.d)} away.</div>`;
+      <b>${esc(d.nearest)}</b>, about ${esc(d.distanceText)} away.</div>`;
   } else {
-    html = `<div class="headline"><b>${esc(label)}</b> is in <b>${esc(res.primary)}</b>.</div>`;
-    if (res.partners.length) {
-      const names = [res.primary, ...res.partners.map((p) => p.name)];
-      const list = names.length === 2
-        ? `${esc(names[0])} and ${esc(names[1])}`
-        : `${names.slice(0, -1).map(esc).join(', ')} and ${esc(names[names.length - 1])}`;
-      html += `<div class="border-note">On the border of the ${list} neighborhoods.</div>`;
+    html = `<div class="headline"><b>${esc(label)}</b> is in <b>${esc(d.neighborhood)}</b>.</div>`;
+    if (d.borderPhrase) {
+      html += `<div class="border-note">${esc(d.borderPhrase)}</div>`;
     }
   }
   if (geo) {

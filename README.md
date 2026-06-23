@@ -22,6 +22,42 @@ file: Arlington County's civic association polygons with the newsroom's
 hand-annotated wall-map changes applied. **67 features**, same property schema
 as the county file (`CIVIC` / `LABEL` hold the neighborhood name).
 
+## MCP server (for Claude)
+
+`mcp-server/` is a Cloudflare Worker that exposes the same lookup to Claude as a
+remote **MCP connector**, so the newsroom's writing Project can ask which
+neighborhood an address is in and get the identical answer to the map (it reuses
+`docs/classify.js` and the same polygon data — single source of truth).
+
+- **Live endpoint:** `https://arlnow-neighborhoods-mcp.local-news-now-group.workers.dev/mcp`
+- **Tools:** `lookup_neighborhood` (address or "NNNN block of ST"),
+  `lookup_by_coordinates` (lat/lng), `list_neighborhoods` (canonical names).
+  Each returns a ready-to-quote sentence plus structured JSON.
+- **Arlington-only by design:** it uses only the Arlington County GIS geocoder
+  (no national geocoder), gates every path through the county outline, and
+  returns a bare "Address not in Arlington." — with no coordinates — for
+  anything outside the county. It cannot be used as a general geocoder.
+- **Auth:** authless; abuse-capped by a Cloudflare rate-limit binding.
+
+Connect it in Claude: **Settings → Connectors → Add custom connector**, paste the
+`/mcp` URL. On Team/Enterprise an Owner adds it org-wide; then enable it in the
+Project. (Free plans allow one custom connector.)
+
+Develop & deploy:
+
+```
+cd mcp-server
+npm install
+npx wrangler dev                         # local: http://127.0.0.1:8787/mcp
+node test-client.mjs <baseUrl>/mcp       # runs the verification checklist
+npx wrangler deploy                      # MUST run from mcp-server/
+```
+
+The Worker **bundles** `docs/neighborhoods.json` / `docs/county.json` at build
+time. After any boundary change: rerun `scripts/build_neighborhoods.py` (the site
+auto-deploys via Pages) **and** `npx wrangler deploy` from `mcp-server/` to pick
+up the new data.
+
 ## How it was made
 
 ```
