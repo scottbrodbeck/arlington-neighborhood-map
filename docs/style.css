@@ -103,3 +103,145 @@ html, body {
 @media (max-width: 480px) {
   #panel { width: calc(100vw - 24px); }
 }
+
+/* ------------------------------------------- pin-drop embed builder page */
+
+body.pin-drop {
+  height: auto;
+  background: #fff;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  color: #222;
+}
+
+.pin-drop header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pin-drop h1 {
+  margin: 0;
+  font-size: 20px;
+  color: #1d1d3a;
+}
+
+.pin-drop h2 {
+  margin: 22px 0 8px;
+  font-size: 15px;
+  color: #1d1d3a;
+}
+
+.pin-drop .lede {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.pin-drop #add-form {
+  display: flex;
+  gap: 6px;
+}
+
+.pin-drop #add-form input {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+}
+
+.pin-drop button {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background: #36365e;
+  color: #fff;
+  cursor: pointer;
+}
+
+.pin-drop button:hover { background: #4a4a7d; }
+
+.pin-drop #add-status {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+.pin-drop #add-status.error { color: #a33; }
+
+.pin-drop #pin-list {
+  margin: 14px 0 0;
+  padding: 0 0 0 24px;
+}
+
+.pin-drop #pin-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.pin-drop #pin-list input {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 8px;
+  font-size: 13px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+}
+
+.pin-drop .pin-meta {
+  font-size: 12px;
+  color: #777;
+  white-space: nowrap;
+}
+
+.pin-drop .remove-btn {
+  padding: 6px 10px;
+  font-size: 12px;
+  background: #eee;
+  color: #a33;
+}
+
+.pin-drop .remove-btn:hover { background: #fbe3e3; }
+
+.pin-drop #height-row {
+  display: block;
+  margin-top: 18px;
+  font-size: 13px;
+  color: #555;
+}
+
+.pin-drop #height-input {
+  width: 70px;
+  padding: 5px 6px;
+  font-size: 13px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+}
+
+.pin-drop #preview {
+  width: 100%;
+  max-width: 650px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  display: block;
+}
+
+.pin-drop #embed-code {
+  width: 100%;
+  padding: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  resize: vertical;
+  background: #f8f8fa;
+}
+
+.pin-drop #copy-btn { margin-top: 8px; }

@@ -22,6 +22,17 @@ file: Arlington County's civic association polygons with the newsroom's
 hand-annotated wall-map changes applied. **67 features**, same property schema
 as the county file (`CIVIC` / `LABEL` hold the neighborhood name).
 
+## Pin-drop embeds
+
+`docs/pin-drop.html` is an unlisted builder page (noindex, not linked from the
+homepage): enter Arlington addresses or blocks, edit labels, and copy an
+`<iframe>` snippet pointing at `docs/embed.html?pins=lat,lng,label|…`. The
+embed is fully stateless — geocoding happens once in the builder's browser and
+the coordinates ride in the URL, so every embed view is just static CDN-cached
+assets (no backend, no storage). Pins never appear on the main map, which
+ignores query params. The snippet is responsive (`width:100%;max-width:650px`)
+for ARLnow article columns.
+
 ## MCP server (for Claude)
 
 `mcp-server/` is a Cloudflare Worker that exposes the same lookup to Claude as a

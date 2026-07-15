@@ -1,14 +1,10 @@
 /* ARLnow Arlington Neighborhood Lookup — browser app.
- * The border algorithm lives in ./classify.js (shared with the MCP server).
- * This file owns the map, the DOM, and the two browser geocoders. */
+ * The border algorithm lives in ./classify.js (shared with the MCP server);
+ * the geocoders live in ./geocode.js (shared with the pin-drop builder).
+ * This file owns the map and the DOM. */
 
-import { classify, inCounty, parseBlock, describe } from './classify.js';
-
-const ARL_GEOCODER =
-  'https://arlgis.arlingtonva.us/arcgis/rest/services/Geoprocessing/' +
-  'Composite_AddPnt_Stnet/GeocodeServer/findAddressCandidates';
-const CENSUS_GEOCODER =
-  'https://geocoding.geo.census.gov/geocoder/locations/onelineaddress';
+import { classify, parseBlock, describe } from './classify.js';
+import { geocode } from './geocode.js';
 
 // Arlington County bounds — used only to constrain the map's pannable area.
 const COUNTY_BBOX = [-77.1723, 38.8275, -77.0310, 38.9344];
@@ -118,58 +114,6 @@ map.on('load', async () => {
   });
 });
 
-// --------------------------------------------------------------- geocoding
-
-async function geocodeArlington(query) {
-  const url = `${ARL_GEOCODER}?${new URLSearchParams({
-    SingleLine: query,
-    outSR: '4326',
-    outFields: 'Loc_name,Addr_type',
-    maxLocations: '5',
-    f: 'json',
-  })}`;
-  const data = await (await fetch(url)).json();
-  const ok = (data.candidates || []).filter((c) => c.score >= 80);
-  if (!ok.length) return null;
-  ok.sort((a, b) =>
-    (b.score - a.score) ||
-    ((b.attributes?.Addr_type === 'PointAddress') - (a.attributes?.Addr_type === 'PointAddress')));
-  const c = ok[0];
-  return { lng: c.location.x, lat: c.location.y, matched: c.address,
-           source: 'Arlington County GIS' };
-}
-
-function geocodeCensus(query) {
-  if (!/,|\bva\b|virginia/i.test(query)) query += ', Arlington, VA';
-  return new Promise((resolve) => {
-    const cb = `_censusCb${Date.now()}`;
-    const script = document.createElement('script');
-    const timer = setTimeout(() => { cleanup(); resolve(null); }, 8000);
-    function cleanup() {
-      clearTimeout(timer);
-      delete window[cb];
-      script.remove();
-    }
-    window[cb] = (data) => {
-      cleanup();
-      const m = data?.result?.addressMatches?.[0];
-      if (!m) return resolve(null);
-      const { x, y } = m.coordinates;
-      if (!inCounty(countyRing, x, y)) return resolve(null);
-      resolve({ lng: x, lat: y, matched: m.matchedAddress,
-                source: 'U.S. Census geocoder (fallback)' });
-    };
-    script.onerror = () => { cleanup(); resolve(null); };
-    script.src = `${CENSUS_GEOCODER}?${new URLSearchParams({
-      address: query,
-      benchmark: 'Public_AR_Current',
-      format: 'jsonp',
-      callback: cb,
-    })}`;
-    document.head.appendChild(script);
-  });
-}
-
 // ---------------------------------------------------------------------- UI
 
 const form = document.getElementById('search-form');
@@ -186,9 +130,7 @@ form.addEventListener('submit', async (e) => {
   const query = parseBlock(raw); // "2000 block of N Quincy St" -> "2050 N Quincy St"
 
   showMessage('Searching…');
-  let geo = null;
-  try { geo = await geocodeArlington(query); } catch { /* fall through */ }
-  if (!geo) geo = await geocodeCensus(query);
+  const geo = await geocode(query, countyRing);
   if (!geo) {
     showMessage("Couldn't find that address in Arlington. Try a street address " +
       "like “3100 Columbia Pike” or “2000 block of N Quincy St”.", true);

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Pin-Drop Embed Builder — ARLnow</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="pin-drop">
+  <header>
+    <h1>Pin-Drop Embed Builder</h1>
+    <a id="brand" href="https://map.arlnow.com/" target="_blank" rel="noopener"
+       title="Arlington Neighborhood Lookup">
+      <img src="arlnow-logo.png" alt="ARLnow">
+    </a>
+  </header>
+  <p class="lede">Add one or more Arlington addresses or blocks, then copy the
+    embed code. Pins are baked into the embed URL — nothing is stored anywhere,
+    and they never appear on the main map.</p>
+
+  <form id="add-form" autocomplete="off">
+    <input id="add-input" type="text"
+           placeholder="Address or block — e.g. 3100 Columbia Pike"
+           aria-label="Address or block to add as a pin">
+    <button type="submit">Add pin</button>
+  </form>
+  <div id="add-status" hidden></div>
+
+  <ol id="pin-list"></ol>
+
+  <div id="builder-output" hidden>
+    <label id="height-row">Map height:
+      <input id="height-input" type="number" min="200" max="900" step="10" value="420"> px
+    </label>
+
+    <h2>Preview</h2>
+    <iframe id="preview" title="Map preview" loading="lazy"></iframe>
+
+    <h2>Embed code</h2>
+    <textarea id="embed-code" readonly rows="5" spellcheck="false"
+              aria-label="Embed code"></textarea>
+    <button id="copy-btn" type="button">Copy embed code</button>
+  </div>
+
+  <script type="module" src="pin-drop.js"></script>
+</body>
+</html>
