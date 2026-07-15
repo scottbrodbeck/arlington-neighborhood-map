@@ -224,6 +224,13 @@ body.pin-drop {
   border-radius: 6px;
 }
 
+.pin-drop #labels-row {
+  display: block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #555;
+}
+
 .pin-drop #preview {
   width: 100%;
   max-width: 650px;

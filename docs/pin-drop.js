@@ -26,6 +26,7 @@ const statusEl = document.getElementById('add-status');
 const listEl = document.getElementById('pin-list');
 const outputEl = document.getElementById('builder-output');
 const heightInput = document.getElementById('height-input');
+const labelsInput = document.getElementById('labels-input');
 const previewEl = document.getElementById('preview');
 const codeEl = document.getElementById('embed-code');
 const copyBtn = document.getElementById('copy-btn');
@@ -120,7 +121,7 @@ function updateOutput() {
   outputEl.hidden = pins.length === 0;
   if (!pins.length) return;
 
-  const query = `?pins=${pinsParam()}`;
+  const query = `?pins=${pinsParam()}${labelsInput.checked ? '&labels=1' : ''}`;
   const height = Math.max(200, Math.min(900, +heightInput.value || 420));
   codeEl.value =
     `<iframe src="${EMBED_BASE}${query}"\n` +
@@ -140,6 +141,7 @@ function scheduleOutputUpdate() {
 }
 
 heightInput.addEventListener('input', scheduleOutputUpdate);
+labelsInput.addEventListener('change', updateOutput);
 
 copyBtn.addEventListener('click', async () => {
   try {
