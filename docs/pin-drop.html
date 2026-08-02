@@ -16,9 +16,11 @@
       <img src="arlnow-logo.png" alt="ARLnow">
     </a>
   </header>
-  <p class="lede">Add one or more Arlington addresses or blocks, then copy the
-    embed code. Pins are baked into the embed URL — nothing is stored anywhere,
-    and they never appear on the main map.</p>
+  <p class="lede">Add one or more Arlington addresses or blocks — paste a
+    comma-separated list to add several pins at once (suite numbers and other
+    non-address bits are ignored) — then copy the embed code. Pins are baked
+    into the embed URL — nothing is stored anywhere, and they never appear on
+    the main map.</p>
 
   <form id="add-form" autocomplete="off">
     <input id="add-input" type="text"
@@ -38,6 +40,12 @@
       <input id="labels-input" type="checkbox"> Show all pin labels
       (off: labels appear when a pin is clicked)
     </label>
+    <div id="zoom-row" role="radiogroup" aria-label="Zoom level">
+      Zoom:
+      <label><input type="radio" name="zoom" value="close" checked> Close</label>
+      <label><input type="radio" name="zoom" value="medium"> Medium</label>
+      <label><input type="radio" name="zoom" value="wide"> Wide (whole county)</label>
+    </div>
 
     <h2>Preview</h2>
     <iframe id="preview" title="Map preview" loading="lazy"></iframe>

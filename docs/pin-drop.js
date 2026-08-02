@@ -27,6 +27,7 @@ const listEl = document.getElementById('pin-list');
 const outputEl = document.getElementById('builder-output');
 const heightInput = document.getElementById('height-input');
 const labelsInput = document.getElementById('labels-input');
+const zoomInputs = document.querySelectorAll('#zoom-row input[name="zoom"]');
 const previewEl = document.getElementById('preview');
 const codeEl = document.getElementById('embed-code');
 const copyBtn = document.getElementById('copy-btn');
@@ -44,6 +45,12 @@ function showStatus(text, isError = false) {
   statusEl.textContent = text;
 }
 
+// Street number (or block form) followed by a street name — filters out
+// comma-separated clauses like "Suite 200", "Arlington", or "VA 22201".
+function looksLikeAddress(clause) {
+  return /^(?:the\s+)?\d{1,5}\s+(?:block\s+of\s+)?\S*[a-z]/i.test(clause);
+}
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const raw = input.value.trim();
@@ -54,23 +61,45 @@ form.addEventListener('submit', async (e) => {
   }
   await dataReady;
 
+  // Comma-separated addresses become one pin each; when nothing looks like a
+  // street address, fall back to geocoding the whole input as one query so
+  // named places ("Wakefield High School") keep working.
+  const clauses = raw.split(',').map((s) => s.trim()).filter(Boolean);
+  const addresses = clauses.filter(looksLikeAddress);
+  const queries = addresses.length ? addresses : [raw];
+
   showStatus('Searching…');
-  const geo = await geocode(parseBlock(raw), countyRing);
-  const d = geo && describe(classify(hoods, countyRing, geo.lng, geo.lat));
-  if (!geo || d.status === 'outside_arlington') {
-    showStatus("Couldn't find that in Arlington. Try a street address like " +
-      '“3100 Columbia Pike” or “2000 block of N Quincy St”.', true);
-    return;
+  const failed = [];
+  let added = 0;
+  for (const q of queries) {
+    if (pins.length >= MAX_PINS) {
+      failed.push(`${q} (over the ${MAX_PINS}-pin cap)`);
+      continue;
+    }
+    const geo = await geocode(parseBlock(q), countyRing);
+    const d = geo && describe(classify(hoods, countyRing, geo.lng, geo.lat));
+    if (!geo || d.status === 'outside_arlington') {
+      failed.push(q);
+      continue;
+    }
+    pins.push({
+      lat: +geo.lat.toFixed(5),
+      lng: +geo.lng.toFixed(5),
+      label: /block\s+of/i.test(q) ? q : defaultLabel(geo.matched),
+      hood: d.status === 'in_neighborhood' ? d.neighborhood : null,
+    });
+    added++;
   }
 
-  pins.push({
-    lat: +geo.lat.toFixed(5),
-    lng: +geo.lng.toFixed(5),
-    label: /block\s+of/i.test(raw) ? raw : defaultLabel(geo.matched),
-    hood: d.status === 'in_neighborhood' ? d.neighborhood : null,
-  });
-  input.value = '';
-  showStatus('');
+  if (added) input.value = '';
+  if (!failed.length) {
+    showStatus('');
+  } else if (added) {
+    showStatus(`Added ${added}, but couldn't find in Arlington: ${failed.join('; ')}`, true);
+  } else {
+    showStatus("Couldn't find that in Arlington. Try a street address like " +
+      '“3100 Columbia Pike” or “2000 block of N Quincy St”.', true);
+  }
   render();
 });
 
@@ -121,7 +150,10 @@ function updateOutput() {
   outputEl.hidden = pins.length === 0;
   if (!pins.length) return;
 
-  const query = `?pins=${pinsParam()}${labelsInput.checked ? '&labels=1' : ''}`;
+  const zoom = [...zoomInputs].find((r) => r.checked)?.value || 'close';
+  const query = `?pins=${pinsParam()}` +
+    (labelsInput.checked ? '&labels=1' : '') +
+    (zoom !== 'close' ? `&zoom=${zoom}` : '');
   const height = Math.max(200, Math.min(900, +heightInput.value || 420));
   codeEl.value =
     `<iframe src="${EMBED_BASE}${query}"\n` +
@@ -142,6 +174,7 @@ function scheduleOutputUpdate() {
 
 heightInput.addEventListener('input', scheduleOutputUpdate);
 labelsInput.addEventListener('change', updateOutput);
+for (const r of zoomInputs) r.addEventListener('change', updateOutput);
 
 copyBtn.addEventListener('click', async () => {
   try {

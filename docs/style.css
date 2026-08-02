@@ -231,6 +231,14 @@ body.pin-drop {
   color: #555;
 }
 
+.pin-drop #zoom-row {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #555;
+}
+
+.pin-drop #zoom-row label { margin-left: 10px; }
+
 .pin-drop #preview {
   width: 100%;
   max-width: 650px;

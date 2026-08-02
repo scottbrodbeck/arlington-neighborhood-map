@@ -11,6 +11,12 @@ const M = 0.02;
 
 const params = new URLSearchParams(location.search);
 const showLabels = params.get('labels') === '1';
+// ?zoom=wide|medium|close (default close). Close hugs the pins, medium backs
+// off for context, wide always frames the whole county.
+const zoomSetting = ['wide', 'medium'].includes(params.get('zoom'))
+  ? params.get('zoom')
+  : 'close';
+const PIN_MAX_ZOOM = { close: 15, medium: 13 };
 
 function parsePins() {
   const raw = params.get('pins') || '';
@@ -32,18 +38,25 @@ function parsePins() {
 const pins = parsePins();
 
 const view = {};
-if (pins.length === 1) {
+if (zoomSetting === 'wide' || pins.length === 0) {
+  // Frame the whole county regardless of where the pins are.
+  view.bounds = [
+    [COUNTY_BBOX[0], COUNTY_BBOX[1]],
+    [COUNTY_BBOX[2], COUNTY_BBOX[3]],
+  ];
+  view.fitBoundsOptions = { padding: 8 };
+} else if (pins.length === 1) {
   view.center = [pins[0].lng, pins[0].lat];
-  view.zoom = 15;
-} else if (pins.length > 1) {
+  view.zoom = PIN_MAX_ZOOM[zoomSetting];
+} else {
   const bounds = new maplibregl.LngLatBounds();
   for (const p of pins) bounds.extend([p.lng, p.lat]);
   view.bounds = bounds;
   // Open labels need more headroom than bare markers.
-  view.fitBoundsOptions = { padding: showLabels ? 72 : 48, maxZoom: 15 };
-} else {
-  view.center = [-77.105, 38.882]; // no pins: just show the county
-  view.zoom = 11;
+  view.fitBoundsOptions = {
+    padding: showLabels ? 72 : 48,
+    maxZoom: PIN_MAX_ZOOM[zoomSetting],
+  };
 }
 
 const map = new maplibregl.Map({
