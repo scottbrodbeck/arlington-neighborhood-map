@@ -45,6 +45,17 @@ async function geocodeArlington(query) {
   return { lng: c.location.x, lat: c.location.y, matched: c.address };
 }
 
+const EMBED_BASE = 'https://map.arlnow.com/embed.html';
+const MAX_PINS = 20; // embed.js ignores pins past this
+
+// "2100 CLARENDON BLVD, ARLINGTON, VIRGINIA" -> "2100 Clarendon Blvd"
+// (same default-label rule as the pin-drop builder page).
+function defaultLabel(matched) {
+  const street = matched.split(',')[0].trim();
+  return street.replace(/\S+/g, (w) =>
+    /^\d/.test(w) ? w : w[0].toUpperCase() + w.slice(1).toLowerCase());
+}
+
 // MCP result envelopes: a human sentence + a JSON line of structured fields.
 function result(sentence, structured) {
   return {
@@ -102,7 +113,9 @@ export class NeighborhoodMCP extends McpAgent {
         'block, or coordinate falls in, including any neighborhood it borders. ' +
         'Arlington County only — this server will not geocode or locate ' +
         'anything outside Arlington, and returns no coordinates for ' +
-        'out-of-county input. Use list_neighborhoods for canonical spellings.',
+        'out-of-county input. Use list_neighborhoods for canonical spellings. ' +
+        'generate_pin_embed turns a list of Arlington addresses into a ' +
+        'ready-to-paste responsive <iframe> pin map for ARLnow articles.',
     },
   );
 
@@ -149,6 +162,81 @@ export class NeighborhoodMCP extends McpAgent {
         const res = classify(neighborhoods, countyRing, lng, lat);
         if (res.kind === 'outside') return refusal('Those coordinates are not in Arlington.');
         return inArlington(`(${lat.toFixed(5)}, ${lng.toFixed(5)})`, res, { lat, lng });
+      },
+    );
+
+    this.server.registerTool(
+      'generate_pin_embed',
+      {
+        description:
+          'Generate a ready-to-paste, responsive <iframe> embed of a map with ' +
+          'pins at one or more Arlington, Virginia addresses or blocks — the ' +
+          'same stateless embeds the map.arlnow.com/pin-drop.html builder ' +
+          'makes. Pins are geocoded once here and baked into the embed URL; ' +
+          'nothing is stored. Arlington County only: out-of-county addresses ' +
+          'are skipped and reported in `failed` with no coordinates. ' +
+          `Maximum ${MAX_PINS} pins.`,
+        inputSchema: {
+          pins: z.array(z.object({
+            address: z.string().describe(
+              'An Arlington VA street address ("3100 Columbia Pike") or block ("2000 block of N Quincy St").'),
+            label: z.string().optional().describe(
+              'Optional pin label shown on the map; defaults to the matched street address (or the block phrase as given).'),
+          })).min(1).max(MAX_PINS)
+            .describe(`Pins to place, in display order (1-${MAX_PINS}).`),
+          show_labels: z.boolean().optional().default(true).describe(
+            'true (default): every pin label is open on load. false: labels appear only when a pin is clicked.'),
+          zoom: z.enum(['close', 'medium', 'wide']).optional().default('close').describe(
+            'close (default): frame the pins tightly. medium: pins with more surrounding context. wide: always frame the whole county.'),
+          height: z.number().int().min(200).max(900).optional().default(420).describe(
+            'Embed height in px (200-900, default 420). Width is responsive (100%, max 650px).'),
+        },
+        annotations: { readOnlyHint: true, openWorldHint: true },
+      },
+      async ({ pins, show_labels, zoom, height }) => {
+        const placed = [];
+        const failed = [];
+        const results = await Promise.all(pins.map(async (pin) => {
+          const geo = await geocodeArlington(parseBlock(pin.address));
+          if (!geo) return { pin, geo: null };
+          const res = classify(neighborhoods, countyRing, geo.lng, geo.lat);
+          return { pin, geo, d: describe(res) };
+        }));
+        for (const { pin, geo, d } of results) {
+          if (!geo || d.status === 'outside_arlington') {
+            failed.push(pin.address);
+            continue;
+          }
+          placed.push({
+            lat: +geo.lat.toFixed(5),
+            lng: +geo.lng.toFixed(5),
+            label: pin.label?.trim() ||
+              (/block\s+of/i.test(pin.address) ? pin.address : defaultLabel(geo.matched)),
+            neighborhood: d.status === 'in_neighborhood' ? d.neighborhood : null,
+          });
+        }
+
+        if (!placed.length) {
+          return refusal('None of those addresses could be found in Arlington.');
+        }
+
+        const pinsParam = placed.map((p) =>
+          `${p.lat.toFixed(5)},${p.lng.toFixed(5)}` +
+          (p.label ? `,${encodeURIComponent(p.label)}` : '')).join('|');
+        const embedUrl = `${EMBED_BASE}?pins=${pinsParam}` +
+          (show_labels ? '&labels=1' : '') +
+          (zoom !== 'close' ? `&zoom=${zoom}` : '');
+        const embedCode =
+          `<iframe src="${embedUrl}"\n` +
+          `  style="width:100%;max-width:650px;height:${height}px;border:0;display:block"\n` +
+          `  loading="lazy" title="Map of Arlington locations"></iframe>`;
+
+        let sentence = `Embed with ${placed.length} pin${placed.length === 1 ? '' : 's'} ` +
+          `(${placed.map((p) => p.label).join('; ')}):\n\n${embedCode}`;
+        if (failed.length) {
+          sentence += `\n\nNot found in Arlington (skipped): ${failed.join('; ')}`;
+        }
+        return result(sentence, { embedUrl, embedCode, pins: placed, failed });
       },
     );
 
