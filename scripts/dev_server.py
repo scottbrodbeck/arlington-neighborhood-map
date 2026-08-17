@@ -3,7 +3,7 @@
 from launchers whose initial working directory is inaccessible."""
 import os
 
-os.chdir('/Users/scottbrodbeck/Documents/GitHub/arlington-neighborhood-map/docs')
+os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'docs'))
 
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler  # noqa: E402
 

@@ -4,7 +4,7 @@
     {
       "name": "neighborhood-map",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["/Users/scottbrodbeck/Documents/GitHub/arlington-neighborhood-map/scripts/dev_server.py"],
+      "runtimeArgs": ["scripts/dev_server.py"],
       "port": 8741
     }
   ]
