@@ -4,16 +4,20 @@
  * connector. Reuses the website's exact border algorithm (docs/classify.mjs)
  * and polygon data so answers can never drift from the public map.
  *
- * SCOPE GUARD — Arlington County, Virginia only. There is no national geocoder
- * in this server (only Arlington County GIS, which returns nothing for
- * out-of-county addresses), every path is gated by classify()/inCounty, and any
- * out-of-scope result is a flat "Address not in Arlington." with NO coordinates
- * or matched address — so it cannot be repurposed as a general geocoder.
+ * SCOPE GUARD — Arlington County, Virginia and its immediate surroundings only.
+ * The lookup tools are strictly Arlington: only the Arlington County GIS
+ * geocoder, every path gated by classify()/inCounty, and out-of-scope results
+ * are a flat "Address not in Arlington." with NO coordinates or matched address.
+ * generate_pin_embed additionally falls back to the U.S. Census geocoder, but
+ * discards anything outside EMBED_BOUNDS (Arlington plus a few miles — the
+ * area the embed map can show), so neither path works as a general geocoder.
  */
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { McpAgent } from 'agents/mcp';
 import { z } from 'zod';
-import { classify, parseBlock, describe } from '../../docs/classify.js';
+import {
+  classify, parseBlock, describe, inEmbedArea, jurisdictionName,
+} from '../../docs/classify.js';
 import neighborhoods from '../../docs/neighborhoods.json';
 import countyData from '../../docs/county.json';
 
@@ -22,6 +26,7 @@ const countyRing = countyData.ring;
 const ARL_GEOCODER =
   'https://arlgis.arlingtonva.us/arcgis/rest/services/Geoprocessing/' +
   'Composite_AddPnt_Stnet/GeocodeServer/findAddressCandidates';
+const CENSUS = 'https://geocoding.geo.census.gov/geocoder';
 
 // Arlington County's own geocoder — authoritative, and it returns no candidates
 // for anything outside the county, which is the server's first scope guard.
@@ -36,13 +41,53 @@ async function geocodeArlington(query) {
   const res = await fetch(url);
   if (!res.ok) return null;
   const data = await res.json();
-  const ok = (data.candidates || []).filter((c) => c.score >= 80);
+  // A bare StreetName hit is the street's centroid, not the address — it's
+  // what the locator returns for out-of-county numbers on in-county streets.
+  const ok = (data.candidates || []).filter((c) =>
+    c.score >= 80 && c.attributes?.Addr_type !== 'StreetName');
   if (!ok.length) return null;
   ok.sort((a, b) =>
     (b.score - a.score) ||
     ((b.attributes?.Addr_type === 'PointAddress') - (a.attributes?.Addr_type === 'PointAddress')));
   const c = ok[0];
   return { lng: c.location.x, lat: c.location.y, matched: c.address };
+}
+
+async function censusJson(path, params) {
+  try {
+    const res = await fetch(`${CENSUS}/${path}?${new URLSearchParams({
+      ...params, benchmark: 'Public_AR_Current', format: 'json',
+    })}`);
+    return res.ok ? await res.json() : null;
+  } catch {
+    return null;
+  }
+}
+
+// Census fallback for the embed tool: tries the query with Arlington assumed,
+// then just Virginia, and keeps only hits inside the embed area.
+async function geocodeCensusNearby(query) {
+  let variants;
+  if (/\bva\b|virginia|\bdc\b|d\.c\./i.test(query)) variants = [query];
+  else if (query.includes(',')) variants = [query, `${query}, VA`];
+  else variants = [`${query}, Arlington, VA`, `${query}, VA`];
+  for (const q of variants) {
+    const data = await censusJson('locations/onelineaddress', { address: q });
+    const m = data?.result?.addressMatches?.[0];
+    if (!m) continue;
+    const { x, y } = m.coordinates;
+    if (!inEmbedArea(x, y)) continue;
+    return { lng: x, lat: y, matched: m.matchedAddress };
+  }
+  return null;
+}
+
+// County / independent city / D.C. for a point, in ARLnow phrasing.
+async function lookupJurisdiction(lng, lat) {
+  const data = await censusJson('geographies/coordinates', {
+    x: lng, y: lat, vintage: 'Current_Current', layers: 'Counties',
+  });
+  return jurisdictionName(data?.result?.geographies?.Counties?.[0]?.NAME);
 }
 
 const EMBED_BASE = 'https://map.arlnow.com/embed.html';
@@ -53,7 +98,9 @@ const MAX_PINS = 20; // embed.js ignores pins past this
 function defaultLabel(matched) {
   const street = matched.split(',')[0].trim();
   return street.replace(/\S+/g, (w) =>
-    /^\d/.test(w) ? w : w[0].toUpperCase() + w.slice(1).toLowerCase());
+    /^\d/.test(w) || /^(?:N|S|E|W|NE|NW|SE|SW)$/i.test(w)
+      ? w.toUpperCase()
+      : w[0].toUpperCase() + w.slice(1).toLowerCase());
 }
 
 // MCP result envelopes: a human sentence + a JSON line of structured fields.
@@ -170,16 +217,21 @@ export class NeighborhoodMCP extends McpAgent {
       {
         description:
           'Generate a ready-to-paste, responsive <iframe> embed of a map with ' +
-          'pins at one or more Arlington, Virginia addresses or blocks — the ' +
-          'same stateless embeds the map.arlnow.com/pin-drop.html builder ' +
-          'makes. Pins are geocoded once here and baked into the embed URL; ' +
-          'nothing is stored. Arlington County only: out-of-county addresses ' +
-          'are skipped and reported in `failed` with no coordinates. ' +
+          'pins at one or more addresses, blocks, or intersections in or just ' +
+          'around Arlington, Virginia — the same stateless embeds the ' +
+          'map.arlnow.com/pin-drop.html builder makes. Pins are geocoded once ' +
+          'here and baked into the embed URL; nothing is stored. Pins inside ' +
+          'Arlington are captioned with their ARLnow neighborhood; pins just ' +
+          'over the county line (Bailey\'s Crossroads, Falls Church, Alexandria, ' +
+          'D.C.) are captioned with the jurisdiction instead. Anything farther ' +
+          'away is skipped and reported in `failed` with no coordinates. ' +
           `Maximum ${MAX_PINS} pins.`,
         inputSchema: {
           pins: z.array(z.object({
             address: z.string().describe(
-              'An Arlington VA street address ("3100 Columbia Pike") or block ("2000 block of N Quincy St").'),
+              'A street address ("3100 Columbia Pike"), block ("2000 block of N Quincy St"), ' +
+              'or intersection ("Columbia Pike & Carlin Springs Rd") in or near Arlington VA. ' +
+              'Add a city for out-of-county addresses ("5800 Columbia Pike, Falls Church").'),
             label: z.string().optional().describe(
               'Optional pin label shown on the map; defaults to the matched street address (or the block phrase as given).'),
           })).min(1).max(MAX_PINS)
@@ -197,13 +249,19 @@ export class NeighborhoodMCP extends McpAgent {
         const placed = [];
         const failed = [];
         const results = await Promise.all(pins.map(async (pin) => {
-          const geo = await geocodeArlington(parseBlock(pin.address));
+          const q = parseBlock(pin.address);
+          let geo = await geocodeArlington(q);
+          if (geo && !inEmbedArea(geo.lng, geo.lat)) geo = null;
+          if (!geo) geo = await geocodeCensusNearby(q);
           if (!geo) return { pin, geo: null };
-          const res = classify(neighborhoods, countyRing, geo.lng, geo.lat);
-          return { pin, geo, d: describe(res) };
+          const d = describe(classify(neighborhoods, countyRing, geo.lng, geo.lat));
+          const jurisdiction = d.status === 'outside_arlington'
+            ? (await lookupJurisdiction(geo.lng, geo.lat)) || 'Outside Arlington'
+            : 'Arlington';
+          return { pin, geo, d, jurisdiction };
         }));
-        for (const { pin, geo, d } of results) {
-          if (!geo || d.status === 'outside_arlington') {
+        for (const { pin, geo, d, jurisdiction } of results) {
+          if (!geo) {
             failed.push(pin.address);
             continue;
           }
@@ -213,16 +271,23 @@ export class NeighborhoodMCP extends McpAgent {
             label: pin.label?.trim() ||
               (/block\s+of/i.test(pin.address) ? pin.address : defaultLabel(geo.matched)),
             neighborhood: d.status === 'in_neighborhood' ? d.neighborhood : null,
+            jurisdiction,
           });
         }
 
         if (!placed.length) {
-          return refusal('None of those addresses could be found in Arlington.');
+          return refusal('None of those addresses could be found in or near Arlington.');
         }
 
-        const pinsParam = placed.map((p) =>
-          `${p.lat.toFixed(5)},${p.lng.toFixed(5)}` +
-          (p.label ? `,${encodeURIComponent(p.label)}` : '')).join('|');
+        // lat,lng[,label[,sub]] — sub (the jurisdiction) only for out-of-county
+        // pins; the embed shows it where the neighborhood would go.
+        const pinsParam = placed.map((p) => {
+          const sub = p.jurisdiction !== 'Arlington' ? p.jurisdiction : '';
+          let s = `${p.lat.toFixed(5)},${p.lng.toFixed(5)}`;
+          if (p.label || sub) s += `,${encodeURIComponent(p.label)}`;
+          if (sub) s += `,${encodeURIComponent(sub)}`;
+          return s;
+        }).join('|');
         const embedUrl = `${EMBED_BASE}?pins=${pinsParam}` +
           (show_labels ? '&labels=1' : '') +
           (zoom !== 'close' ? `&zoom=${zoom}` : '');
@@ -234,7 +299,7 @@ export class NeighborhoodMCP extends McpAgent {
         let sentence = `Embed with ${placed.length} pin${placed.length === 1 ? '' : 's'} ` +
           `(${placed.map((p) => p.label).join('; ')}):\n\n${embedCode}`;
         if (failed.length) {
-          sentence += `\n\nNot found in Arlington (skipped): ${failed.join('; ')}`;
+          sentence += `\n\nNot found in or near Arlington (skipped): ${failed.join('; ')}`;
         }
         return result(sentence, { embedUrl, embedCode, pins: placed, failed });
       },

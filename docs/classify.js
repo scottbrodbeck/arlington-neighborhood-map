@@ -68,6 +68,33 @@ export function inCounty(countyRing, lng, lat) {
   return countyRing ? ringContains(countyRing, lng, lat) : true;
 }
 
+// Arlington County bounding box [w, s, e, n], and the somewhat larger area the
+// maps will pan/show. Pins may sit anywhere in EMBED_BOUNDS, so spots just
+// over the line (Bailey's Crossroads, Falls Church, Old Town, downtown D.C.)
+// still work — they just get a jurisdiction instead of a neighborhood.
+export const COUNTY_BBOX = [-77.1723, 38.8275, -77.0310, 38.9344];
+export const EMBED_BOUNDS = [
+  [COUNTY_BBOX[0] - 0.08, COUNTY_BBOX[1] - 0.06],
+  [COUNTY_BBOX[2] + 0.08, COUNTY_BBOX[3] + 0.06],
+];
+
+export function inEmbedArea(lng, lat) {
+  return lng >= EMBED_BOUNDS[0][0] && lng <= EMBED_BOUNDS[1][0] &&
+         lat >= EMBED_BOUNDS[0][1] && lat <= EMBED_BOUNDS[1][1];
+}
+
+// Census county / county-equivalent NAME -> how ARLnow writes the jurisdiction.
+// "Fairfax County" stays as is; Virginia independent cities drop the "city"
+// suffix ("Alexandria city" -> "Alexandria"), except the City of Fairfax,
+// which needs disambiguating from the county.
+export function jurisdictionName(censusName) {
+  if (!censusName) return null;
+  if (censusName === 'District of Columbia') return 'Washington, D.C.';
+  const m = censusName.match(/^(.+) city$/i);
+  if (m) return m[1] === 'Fairfax' ? 'City of Fairfax' : m[1];
+  return censusName;
+}
+
 // -> { kind: 'inside'|'unassigned'|'outside', primary, partners: [{name,d}], nearest }
 export function classify(hoods, countyRing, lng, lat) {
   const containing = [];

@@ -30,8 +30,18 @@ await call({
 });
 // wide zoom
 await call({ pins: [{ address: '1100 Wilson Blvd' }], zoom: 'wide' });
-// mixed valid/invalid + fully invalid
-await call({ pins: [{ address: '4420 33rd St N' }, { address: '1600 Pennsylvania Ave NW, Washington DC' }] });
+// just outside Arlington: intersection (Fairfax County), Fairfax address with a
+// Falls Church mailing address, Old Town Alexandria, downtown DC (all in the
+// embed area -> jurisdiction captions), plus the StreetName-junk regression
+await call({ pins: [
+  { address: 'Columbia Pike & Carlin Springs Rd' },
+  { address: '5800 Columbia Pike, Falls Church' },
+  { address: '5800 Columbia Pike' },
+  { address: '100 King St, Alexandria, VA' },
+  { address: '1600 Pennsylvania Ave NW, Washington DC' },
+]});
+// mixed near/far + fully out of range
+await call({ pins: [{ address: '4420 33rd St N' }, { address: '350 5th Ave, New York' }] });
 await call({ pins: [{ address: '350 5th Ave, New York' }] });
 
 await client.close();

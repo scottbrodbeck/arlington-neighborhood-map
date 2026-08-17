@@ -1,15 +1,17 @@
 /* Shared browser geocoding — Arlington County GIS first, U.S. Census JSONP
- * fallback, both constrained to Arlington. Used by the main map (app.js) and
- * the pin-drop embed builder (pin-drop.js). Browser-only: the Census fallback
- * injects a <script> tag (the Census geocoder has no CORS, only JSONP). */
+ * fallback, both constrained to the embed area (Arlington plus a few miles
+ * around it; see EMBED_BOUNDS in classify.js). Used by the main map (app.js)
+ * and the pin-drop embed builder (pin-drop.js). Browser-only: the Census
+ * calls inject <script> tags (the Census geocoder has no CORS, only JSONP). */
 
-import { inCounty } from './classify.js';
+// Versioned import: these exports are newer than some cached classify.js
+// copies, and GitHub Pages caches each file independently for 10 minutes.
+import { inEmbedArea, jurisdictionName } from './classify.js?v=3';
 
 const ARL_GEOCODER =
   'https://arlgis.arlingtonva.us/arcgis/rest/services/Geoprocessing/' +
   'Composite_AddPnt_Stnet/GeocodeServer/findAddressCandidates';
-const CENSUS_GEOCODER =
-  'https://geocoding.geo.census.gov/geocoder/locations/onelineaddress';
+const CENSUS = 'https://geocoding.geo.census.gov/geocoder';
 
 export async function geocodeArlington(query) {
   const url = `${ARL_GEOCODER}?${new URLSearchParams({
@@ -20,7 +22,10 @@ export async function geocodeArlington(query) {
     f: 'json',
   })}`;
   const data = await (await fetch(url)).json();
-  const ok = (data.candidates || []).filter((c) => c.score >= 80);
+  // A bare StreetName hit is the street's centroid, not the address — it's
+  // what the locator returns for out-of-county numbers on in-county streets.
+  const ok = (data.candidates || []).filter((c) =>
+    c.score >= 80 && c.attributes?.Addr_type !== 'StreetName');
   if (!ok.length) return null;
   ok.sort((a, b) =>
     (b.score - a.score) ||
@@ -30,10 +35,10 @@ export async function geocodeArlington(query) {
            source: 'Arlington County GIS' };
 }
 
-export function geocodeCensus(query, countyRing) {
-  if (!/,|\bva\b|virginia/i.test(query)) query += ', Arlington, VA';
+// JSONP request to a Census geocoder endpoint; resolves null on error/timeout.
+function censusJsonp(path, params) {
   return new Promise((resolve) => {
-    const cb = `_censusCb${Date.now()}`;
+    const cb = `_censusCb${Date.now()}${Math.floor(Math.random() * 1e6)}`;
     const script = document.createElement('script');
     const timer = setTimeout(() => { cleanup(); resolve(null); }, 8000);
     function cleanup() {
@@ -41,30 +46,51 @@ export function geocodeCensus(query, countyRing) {
       delete window[cb];
       script.remove();
     }
-    window[cb] = (data) => {
-      cleanup();
-      const m = data?.result?.addressMatches?.[0];
-      if (!m) return resolve(null);
-      const { x, y } = m.coordinates;
-      if (!inCounty(countyRing, x, y)) return resolve(null);
-      resolve({ lng: x, lat: y, matched: m.matchedAddress,
-                source: 'U.S. Census geocoder (fallback)' });
-    };
+    window[cb] = (data) => { cleanup(); resolve(data); };
     script.onerror = () => { cleanup(); resolve(null); };
-    script.src = `${CENSUS_GEOCODER}?${new URLSearchParams({
-      address: query,
-      benchmark: 'Public_AR_Current',
-      format: 'jsonp',
-      callback: cb,
+    script.src = `${CENSUS}/${path}?${new URLSearchParams({
+      ...params, benchmark: 'Public_AR_Current', format: 'jsonp', callback: cb,
     })}`;
     document.head.appendChild(script);
   });
 }
 
-// Arlington GIS first, Census fallback; null when nothing matches in-county.
-export async function geocode(query, countyRing) {
+// Query variants to try, most specific first: bare addresses get Arlington
+// assumed, then just Virginia so nearby out-of-county addresses still resolve.
+function censusVariants(query) {
+  if (/\bva\b|virginia|\bdc\b|d\.c\./i.test(query)) return [query];
+  if (query.includes(',')) return [query, `${query}, VA`];
+  return [`${query}, Arlington, VA`, `${query}, VA`];
+}
+
+export async function geocodeCensus(query) {
+  for (const q of censusVariants(query)) {
+    const data = await censusJsonp('locations/onelineaddress', { address: q });
+    const m = data?.result?.addressMatches?.[0];
+    if (!m) continue;
+    const { x, y } = m.coordinates;
+    if (!inEmbedArea(x, y)) continue;
+    return { lng: x, lat: y, matched: m.matchedAddress,
+             source: 'U.S. Census geocoder (fallback)' };
+  }
+  return null;
+}
+
+// Arlington GIS first, Census fallback; null when nothing matches nearby.
+// Callers decide what to do with in-area but out-of-county results.
+export async function geocode(query) {
   let geo = null;
   try { geo = await geocodeArlington(query); } catch { /* fall through */ }
-  if (!geo) geo = await geocodeCensus(query, countyRing);
+  if (geo && !inEmbedArea(geo.lng, geo.lat)) geo = null;
+  if (!geo) geo = await geocodeCensus(query);
   return geo;
+}
+
+// Which county / independent city / D.C. a point is in, in ARLnow phrasing
+// ("Fairfax County", "Falls Church", "Alexandria", "Washington, D.C.").
+export async function lookupJurisdiction(lng, lat) {
+  const data = await censusJsonp('geographies/coordinates', {
+    x: lng, y: lat, vintage: 'Current_Current', layers: 'Counties',
+  });
+  return jurisdictionName(data?.result?.geographies?.Counties?.[0]?.NAME);
 }

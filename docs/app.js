@@ -3,7 +3,7 @@
  * the geocoders live in ./geocode.js (shared with the pin-drop builder).
  * This file owns the map and the DOM. */
 
-import { classify, parseBlock, describe } from './classify.js';
+import { classify, inCounty, parseBlock, describe } from './classify.js';
 import { geocode } from './geocode.js';
 
 // Arlington County bounds — used only to constrain the map's pannable area.
@@ -130,8 +130,10 @@ form.addEventListener('submit', async (e) => {
   const query = parseBlock(raw); // "2000 block of N Quincy St" -> "2050 N Quincy St"
 
   showMessage('Searching…');
-  const geo = await geocode(query, countyRing);
-  if (!geo) {
+  const geo = await geocode(query);
+  // The main map is Arlington-only: nearby out-of-county hits are treated
+  // as not found, exactly as before.
+  if (!geo || !inCounty(countyRing, geo.lng, geo.lat)) {
     showMessage("Couldn't find that address in Arlington. Try a street address " +
       "like “3100 Columbia Pike” or “2000 block of N Quincy St”.", true);
     return;

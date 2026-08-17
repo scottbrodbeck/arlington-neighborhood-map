@@ -16,11 +16,13 @@
       <img src="arlnow-logo.png" alt="ARLnow">
     </a>
   </header>
-  <p class="lede">Add one or more Arlington addresses or blocks — paste a
-    comma-separated list to add several pins at once (suite numbers and other
-    non-address bits are ignored) — then copy the embed code. Pins are baked
-    into the embed URL — nothing is stored anywhere, and they never appear on
-    the main map.</p>
+  <p class="lede">Add one or more addresses, blocks, or intersections in or
+    just around Arlington — paste a comma-separated list to add several pins
+    at once (suite numbers and other non-address bits are ignored) — then copy
+    the embed code. Pins outside the county are captioned with their
+    jurisdiction (Fairfax County, Falls Church, Alexandria) instead of a
+    neighborhood. Pins are baked into the embed URL — nothing is stored
+    anywhere, and they never appear on the main map.</p>
 
   <form id="add-form" autocomplete="off">
     <input id="add-input" type="text"
@@ -56,6 +58,6 @@
     <button id="copy-btn" type="button">Copy embed code</button>
   </div>
 
-  <script type="module" src="pin-drop.js?v=2"></script>
+  <script type="module" src="pin-drop.js?v=3"></script>
 </body>
 </html>

@@ -25,13 +25,18 @@ as the county file (`CIVIC` / `LABEL` hold the neighborhood name).
 ## Pin-drop embeds
 
 `docs/pin-drop.html` is an unlisted builder page (noindex, not linked from the
-homepage): enter Arlington addresses or blocks, edit labels, and copy an
-`<iframe>` snippet pointing at `docs/embed.html?pins=lat,lng,label|…`. The
-embed is fully stateless — geocoding happens once in the builder's browser and
-the coordinates ride in the URL, so every embed view is just static CDN-cached
-assets (no backend, no storage). Pins never appear on the main map, which
-ignores query params. The snippet is responsive (`width:100%;max-width:650px`)
-for ARLnow article columns.
+homepage): enter addresses, blocks, or intersections in or just around
+Arlington, edit labels, and copy an `<iframe>` snippet pointing at
+`docs/embed.html?pins=lat,lng,label[,sub]|…`. The embed is fully stateless —
+geocoding happens once in the builder's browser and the coordinates ride in the
+URL, so every embed view is just static CDN-cached assets (no backend, no
+storage). In-county pins are captioned with their neighborhood; pins just over
+the line (Bailey's Crossroads, Falls Church, Alexandria, D.C.) get their
+jurisdiction — looked up once via the Census county layer and carried as the
+optional 4th `sub` field. Pins never appear on the main map, which ignores
+query params. The snippet is responsive (`width:100%;max-width:650px`) for
+ARLnow article columns. The MCP server's `generate_pin_embed` tool produces the
+same embeds on demand (see `mcp-server/PIN-EMBED-GUIDE.md`).
 
 ## MCP server (for Claude)
 

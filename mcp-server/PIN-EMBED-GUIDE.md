@@ -27,10 +27,13 @@ the article HTML as-is.
 ```
 
 - **pins** (required, 1–20): each needs an `address` — a street address
-  (`"3100 Columbia Pike"`) or a block (`"2000 block of N Quincy St"`).
-  `label` is optional; it's the text shown on the map pin. Default label is
-  the matched street address (or the block phrase as written). Keep labels
-  short — a few words.
+  (`"3100 Columbia Pike"`), a block (`"2000 block of N Quincy St"`), or an
+  intersection (`"Columbia Pike & Carlin Springs Rd"`). For addresses just
+  outside Arlington, include the city (`"5800 Columbia Pike, Falls Church"`,
+  `"100 King St, Alexandria"`) so the right one is found. `label` is
+  optional; it's the text shown on the map pin. Default label is the matched
+  street address (or the block phrase as written). Keep labels short — a few
+  words.
 - **show_labels** (default `true`): `true` opens every pin's label on load;
   `false` shows labels only when a reader clicks a pin. Turn off when many
   pins are close together and open labels would overlap.
@@ -44,17 +47,25 @@ the article HTML as-is.
 ## Output
 
 The reply contains the iframe snippet ready to paste, plus a JSON line with:
-`embedUrl`, `embedCode`, `pins` (each with `lat`, `lng`, `label`, and its
-ARLnow `neighborhood` — useful for phrasing the story), and `failed`
-(addresses that couldn't be found in Arlington and were skipped).
+`embedUrl`, `embedCode`, `pins` (each with `lat`, `lng`, `label`, its ARLnow
+`neighborhood` — `null` for out-of-county pins — and `jurisdiction`:
+`"Arlington"`, `"Fairfax County"`, `"Falls Church"`, `"Alexandria"`,
+`"Washington, D.C."`, etc.), and `failed` (addresses that couldn't be found
+in or near Arlington and were skipped).
+
+On the map, in-county pins are captioned with their neighborhood; pins just
+over the line are captioned with the jurisdiction instead.
 
 If an address lands in `failed`, tell the user rather than silently dropping
-it — it usually means a typo or a non-Arlington location.
+it — it usually means a typo or a location too far from Arlington.
 
 ## Rules and limits
 
-- **Arlington County only.** Out-of-county addresses are skipped and listed
-  in `failed`; the tool never returns coordinates for them.
+- **Arlington and its immediate surroundings only.** Pins can sit anywhere
+  the embed map can show — Arlington plus a few miles around it (Falls
+  Church, Bailey's Crossroads, Seven Corners, Alexandria, downtown D.C.).
+  Anything farther is skipped and listed in `failed`; the tool never returns
+  coordinates for it.
 - **Max 20 pins** per embed.
 - **Embeds are stateless and immutable.** All pin data lives in the URL;
   nothing is stored. To change pins after publishing, generate a new embed

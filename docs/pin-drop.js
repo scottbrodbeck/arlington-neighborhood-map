@@ -1,9 +1,11 @@
-/* Pin-drop embed builder — unlisted page that geocodes Arlington addresses or
- * blocks in the browser and emits a copy-paste <iframe> pointing at
- * embed.html?pins=... . Fully stateless: nothing is saved server-side. */
+/* Pin-drop embed builder — unlisted page that geocodes Arlington-area
+ * addresses or blocks in the browser and emits a copy-paste <iframe> pointing
+ * at embed.html?pins=... . Pins just outside Arlington (Bailey's Crossroads,
+ * Falls Church, Alexandria, D.C.) are allowed and get their jurisdiction in
+ * place of a neighborhood. Fully stateless: nothing is saved server-side. */
 
-import { classify, describe, parseBlock } from './classify.js';
-import { geocode } from './geocode.js';
+import { classify, describe, parseBlock } from './classify.js?v=3';
+import { geocode, lookupJurisdiction } from './geocode.js?v=3';
 
 const EMBED_BASE = 'https://map.arlnow.com/embed.html';
 const MAX_PINS = 20;
@@ -18,7 +20,10 @@ const dataReady = Promise.all([
   countyRing = c.ring;
 });
 
-const pins = []; // { lat, lng, label, hood }
+// { lat, lng, label, hood, sub } — `hood` is what the list shows (neighborhood
+// or jurisdiction); `sub` is only set for out-of-county pins and rides in the
+// embed URL since the embed can't compute jurisdictions itself.
+const pins = [];
 
 const form = document.getElementById('add-form');
 const input = document.getElementById('add-input');
@@ -36,7 +41,9 @@ const copyBtn = document.getElementById('copy-btn');
 function defaultLabel(matched) {
   const street = matched.split(',')[0].trim();
   return street.replace(/\S+/g, (w) =>
-    /^\d/.test(w) ? w : w[0].toUpperCase() + w.slice(1).toLowerCase());
+    /^\d/.test(w) || /^(?:N|S|E|W|NE|NW|SE|SW)$/i.test(w)
+      ? w.toUpperCase()
+      : w[0].toUpperCase() + w.slice(1).toLowerCase());
 }
 
 function showStatus(text, isError = false) {
@@ -45,10 +52,30 @@ function showStatus(text, isError = false) {
   statusEl.textContent = text;
 }
 
-// Street number (or block form) followed by a street name — filters out
-// comma-separated clauses like "Suite 200", "Arlington", or "VA 22201".
+// Street number (or block form) followed by a street name, or an intersection
+// ("Columbia Pike & Carlin Springs Rd").
 function looksLikeAddress(clause) {
-  return /^(?:the\s+)?\d{1,5}\s+(?:block\s+of\s+)?\S*[a-z]/i.test(clause);
+  return /^(?:the\s+)?\d{1,5}\s+(?:block\s+of\s+)?\S*[a-z]/i.test(clause) ||
+    /[a-z]\s+(?:&|and|at|\/)\s+[a-z]/i.test(clause);
+}
+
+// Unit-style clauses ("Suite 200", "Apt 3B", "#4", "2nd floor") are dropped;
+// any other non-address clause (a city, "VA", "VA 22204") is kept as context
+// on the preceding address, which matters for out-of-county pins.
+function isUnitClause(clause) {
+  return /^(?:suite|ste|apt|apartment|unit|#|floor|fl|room|rm|bldg|building)\b/i.test(clause) ||
+    /^\d+(?:st|nd|rd|th)\s+(?:floor|fl)\b/i.test(clause);
+}
+
+// "1100 Wilson Blvd, Suite 200, 100 King St, Alexandria, VA"
+//   -> ["1100 Wilson Blvd", "100 King St, Alexandria, VA"]
+function splitAddresses(raw) {
+  const out = [];
+  for (const clause of raw.split(',').map((s) => s.trim()).filter(Boolean)) {
+    if (looksLikeAddress(clause)) out.push(clause);
+    else if (out.length && !isUnitClause(clause)) out[out.length - 1] += `, ${clause}`;
+  }
+  return out;
 }
 
 form.addEventListener('submit', async (e) => {
@@ -64,8 +91,7 @@ form.addEventListener('submit', async (e) => {
   // Comma-separated addresses become one pin each; when nothing looks like a
   // street address, fall back to geocoding the whole input as one query so
   // named places ("Wakefield High School") keep working.
-  const clauses = raw.split(',').map((s) => s.trim()).filter(Boolean);
-  const addresses = clauses.filter(looksLikeAddress);
+  const addresses = splitAddresses(raw);
   const queries = addresses.length ? addresses : [raw];
 
   showStatus('Searching…');
@@ -76,18 +102,27 @@ form.addEventListener('submit', async (e) => {
       failed.push(`${q} (over the ${MAX_PINS}-pin cap)`);
       continue;
     }
-    const geo = await geocode(parseBlock(q), countyRing);
-    const d = geo && describe(classify(hoods, countyRing, geo.lng, geo.lat));
-    if (!geo || d.status === 'outside_arlington') {
+    const geo = await geocode(parseBlock(q)); // null unless in the embed area
+    if (!geo) {
       failed.push(q);
       continue;
     }
-    pins.push({
+    const d = describe(classify(hoods, countyRing, geo.lng, geo.lat));
+    const pin = {
       lat: +geo.lat.toFixed(5),
       lng: +geo.lng.toFixed(5),
       label: /block\s+of/i.test(q) ? q : defaultLabel(geo.matched),
-      hood: d.status === 'in_neighborhood' ? d.neighborhood : null,
-    });
+      hood: null,
+      sub: null,
+    };
+    if (d.status === 'in_neighborhood') {
+      pin.hood = d.neighborhood;
+    } else if (d.status === 'outside_arlington') {
+      // Just over the line: caption with the jurisdiction instead.
+      pin.sub = (await lookupJurisdiction(geo.lng, geo.lat)) || 'Outside Arlington';
+      pin.hood = pin.sub;
+    }
+    pins.push(pin);
     added++;
   }
 
@@ -95,10 +130,11 @@ form.addEventListener('submit', async (e) => {
   if (!failed.length) {
     showStatus('');
   } else if (added) {
-    showStatus(`Added ${added}, but couldn't find in Arlington: ${failed.join('; ')}`, true);
+    showStatus(`Added ${added}, but couldn't find near Arlington: ${failed.join('; ')}`, true);
   } else {
-    showStatus("Couldn't find that in Arlington. Try a street address like " +
-      '“3100 Columbia Pike” or “2000 block of N Quincy St”.', true);
+    showStatus("Couldn't find that in or near Arlington. Try a street address " +
+      'like “3100 Columbia Pike”, a block like “2000 block of N Quincy St”, or an ' +
+      'intersection like “Columbia Pike & Carlin Springs Rd”.', true);
   }
   render();
 });
@@ -138,11 +174,14 @@ function render() {
   updateOutput();
 }
 
+// lat,lng[,label[,sub]] — sub only for out-of-county pins.
 function pinsParam() {
   return pins.map((p) => {
     const label = p.label.trim();
-    return `${p.lat.toFixed(5)},${p.lng.toFixed(5)}` +
-      (label ? `,${encodeURIComponent(label)}` : '');
+    let s = `${p.lat.toFixed(5)},${p.lng.toFixed(5)}`;
+    if (label || p.sub) s += `,${encodeURIComponent(label)}`;
+    if (p.sub) s += `,${encodeURIComponent(p.sub)}`;
+    return s;
   }).join('|');
 }
 
